@@ -8,6 +8,7 @@
     "./DashboardDiv": "./src/DashboardDiv.tsx",
     "./MacButton": "./src/Button/MacButton.tsx",
     "./MacNavbar": "./src/Mac/MacNavbar.tsx",
+    "./WhiteLine": "./src/WhiteLine.tsx",
     "./Line": "./src/Line.tsx",
     "./card": "./src/card.tsx",
     "./code": "./src/code.tsx",

@@ -9,28 +9,30 @@ const ScreenSize = () => {
 
   return (
     <>
-      <DashboardInput>
-        <div className="flex justify-center items-center gap-4 text-lg">
-          <button
-            onClick={() => setSelected("desktop")}
-            className={`flex justify-center items-center gap-2 text-lg transition-colors duration-200 hover:bg-white/30 rounded-full px-2 ${selected === "desktop" ? "bg-white/15" : ""}`}
-          >
-            <BiDesktop /> Desktop
-          </button>
-          <button
-            onClick={() => setSelected("tablet")}
-            className={`flex justify-center items-center gap-2 text-lg transition-colors duration-200 hover:bg-white/30 rounded-full px-2 ${selected === "tablet" ? "bg-white/15" : ""}`}
-          >
-            <BsTablet /> Tablet
-          </button>
-          <button
-            onClick={() => setSelected("mobile")}
-            className={`flex justify-center items-center gap-2 text-lg transition-colors duration-200 hover:bg-white/30 rounded-full px-2 ${selected === "mobile" ? "bg-white/15" : ""}`}
-          >
-            <BiMobile /> Mobile
-          </button>
-        </div>
-      </DashboardInput>
+      <div>
+        <DashboardInput>
+          <div className="flex justify-center items-center gap-2 ">
+            <button
+              onClick={() => setSelected("desktop")}
+              className={`flex justify-center items-center gap-2 text-lg transition-colors duration-200 hover:bg-white/30 rounded-full px-2 ${selected === "desktop" ? "bg-white/15" : ""}`}
+            >
+              <BiDesktop /> Desktop
+            </button>
+            <button
+              onClick={() => setSelected("tablet")}
+              className={`flex justify-center items-center gap-2 text-lg transition-colors duration-200 hover:bg-white/30 rounded-full px-2 ${selected === "tablet" ? "bg-white/15" : ""}`}
+            >
+              <BsTablet /> Tablet
+            </button>
+            <button
+              onClick={() => setSelected("mobile")}
+              className={`flex justify-center items-center gap-2 text-lg transition-colors duration-200 hover:bg-white/30 rounded-full px-2 ${selected === "mobile" ? "bg-white/15" : ""}`}
+            >
+              <BiMobile /> Mobile
+            </button>
+          </div>
+        </DashboardInput>
+      </div>
     </>
   );
 };

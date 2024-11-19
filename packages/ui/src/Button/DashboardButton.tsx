@@ -16,7 +16,7 @@ export const DashboardButton = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`px-4 py-2 flex justify-between items-center font-semibold text-lg dark:bg-white bg-black dark:text-black text-white  rounded-full hover:bg-white/70 transition-color duration-200 ease-linear ${className}`}
+      className={`xl:text-lg lg:text-md md:text-sm sm:text-xs md:px-2 md:py-1 px-4 py-2 flex justify-between items-center font-semibold text-md dark:bg-white bg-black dark:text-black text-white  rounded-full hover:bg-white/70 transition-color duration-200 ease-linear ${className}`}
       onClick={onClick}
     >
       {children}

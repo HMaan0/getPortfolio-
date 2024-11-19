@@ -8,13 +8,13 @@ const UndoRedo = () => {
     <>
       <div className="flex gap-2">
         <Button>
-          <BiUndo size={25}></BiUndo>
+          <BiUndo size={20}></BiUndo>
         </Button>
         <Button>
-          <BiRedo size={25}></BiRedo>
+          <BiRedo size={20}></BiRedo>
         </Button>
         <DashboardButton>
-          <CiShare1 size={25} /> Preview
+          <CiShare1 size={20} /> Preview
         </DashboardButton>
       </div>
     </>
