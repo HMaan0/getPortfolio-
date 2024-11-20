@@ -17,7 +17,6 @@ const RightSidebar = () => {
         <SideIcon setIsOpen={setIsOpen} isOpen={isOpen} />
         <div className={`${transitionClasses} ${!isOpen && "hidden"}`}>
           <Section />
-          <Section />
         </div>
       </Sidebar>
     </>

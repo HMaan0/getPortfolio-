@@ -1,5 +1,9 @@
-const Admin = () => {
-  return <div>HI from admin component</div>;
-};
+import Admin from "./Admin";
 
-export default Admin;
+export default function Page() {
+  return (
+    <>
+      <Admin></Admin>
+    </>
+  );
+}

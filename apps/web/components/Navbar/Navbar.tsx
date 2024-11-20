@@ -8,7 +8,9 @@ const Navbar = () => {
     <>
       <MacNavbar>
         <ProjectLink></ProjectLink>
-        <ScreenSize></ScreenSize>
+        <div className="hidden lg:block">
+          <ScreenSize></ScreenSize>
+        </div>
         <UndoRedo></UndoRedo>
       </MacNavbar>
     </>
