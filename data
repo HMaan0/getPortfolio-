@@ -1,7 +1,7 @@
 const data = {
   "Hero": {
-    "name": "Iron man",
-    "des": "I'am Iron man , king of this universe ",
+    "name": "Iron Man",
+    "des": "Software Developer with a passion for clean code",
     "image": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/9d/Iron_Man_Infobox.jpg/revision/latest?cb=20240802142023",
     "words": [
       "Eat",
@@ -11,13 +11,13 @@ const data = {
     ]
   },
   "Github": {
-    "github_username": "harsh-deepsingh"
+    "github_username": "hkirat"
   },
   "Work": [
     {
-      "title": " Captain America",
-      "company": " Avengers infinity war ",
-      "duration": "3 years",
+      "title": "Software Engineer",
+      "company": "Tech Corp",
+      "duration": "2 years",
       "description": "Developed backend APIs."
     }
   ],

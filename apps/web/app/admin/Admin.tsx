@@ -27,7 +27,7 @@ const Admin = () => {
               </Card>
             </div>
           </section>
-          <TechStack></TechStack>
+          {/* <TechStack></TechStack> */}
           {data.Work.map((work) => work.title.length > 0).at(0) && (
             <section id="work" className="h-full  ">
               <Work></Work>

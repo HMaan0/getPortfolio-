@@ -2,12 +2,8 @@
 import { Typewriter } from "react-simple-typewriter";
 
 const TypeWriter = ({ words }: { words: string[] }) => {
-  const handleType = (count: number) => {
-    console.log(count);
-  };
-  const handleDone = () => {
-    console.log(`Done after 5 loops!`);
-  };
+  const handleType = () => {};
+  const handleDone = () => {};
   return (
     <span style={{ color: "green", fontWeight: "bold" }}>
       <Typewriter

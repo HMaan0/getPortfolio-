@@ -87,7 +87,7 @@ export interface Work {
 }
 
 export interface Project {
-  title?: string; // Optional because one of the projects in projectData is empty
+  title?: string;
   description?: string;
   liveLink?: string;
   codeLink?: string;
@@ -116,7 +116,6 @@ export interface Data {
   projectData: Project[];
   aboutData: AboutData;
   contact: Contact;
-  section: string[];
 }
 
 export default Data;

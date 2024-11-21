@@ -1,29 +1,35 @@
 import { Button } from "@repo/ui/Button";
-import DashboardInput from "@repo/ui/DashboardDiv";
 import { Line } from "@repo/ui/Line";
+import Inputs from "./Inputs";
+
 interface CardItemsProps {
   sectionData: any;
 }
-const CardItems = ({ sectionData }: CardItemsProps) => {
+const CardItems = ({
+  sectionData,
+  section,
+}: {
+  sectionData: CardItemsProps;
+  section: string;
+}) => {
   return (
     <>
-      <div className="flex gap-5 flex-col">
+      <div className="flex gap-7 flex-col">
         <Line></Line>
-        <Button className="w-min">Card</Button>
+        <Button className="w-min text-sm">Card</Button>
 
         {Array.isArray(sectionData) ? (
           <>
             {sectionData.map((arr) =>
               Object.keys(arr).map((key) => (
                 <>
-                  <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-1">
                     {key}
-                    <DashboardInput>
-                      <input
-                        placeholder="Type Heading here"
-                        className="bg-transparent focus:outline-none "
-                      />
-                    </DashboardInput>
+                    <Inputs
+                      value={arr[key]}
+                      section={section}
+                      sectionKey={key}
+                    ></Inputs>
                   </div>
                 </>
               ))
@@ -33,14 +39,14 @@ const CardItems = ({ sectionData }: CardItemsProps) => {
           <>
             {Object.keys(sectionData).map((key) => (
               <>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-1">
                   {key}
-                  <DashboardInput>
-                    <input
-                      placeholder="Type Heading here"
-                      className="bg-transparent focus:outline-none "
-                    />
-                  </DashboardInput>
+
+                  <Inputs
+                    value={sectionData[key]}
+                    section={section}
+                    sectionKey={key}
+                  ></Inputs>
                 </div>
               </>
             ))}
