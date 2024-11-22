@@ -39,7 +39,7 @@ const Section = () => {
               </DashboardButton>
             </div>
             <div
-              className={`flex flex-col p-4 overflow-hidden transition-all duration-500 mb-0 ${
+              className={` flex flex-col p-4 overflow-hidden transition-all duration-500   ${
                 isOpen[index] ? "opacity-100 max-h-screen" : "opacity-0 max-h-0"
               }`}
             >

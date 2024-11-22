@@ -7,7 +7,8 @@ const filePath = path.join(process.cwd(), "./data.ts");
 export async function writeToFile(
   newValue: string,
   section: string,
-  key: string
+  key: string,
+  index: number
 ) {
   try {
     const rawData = await readFile(filePath, "utf-8");
@@ -16,13 +17,19 @@ export async function writeToFile(
     const dataObjectCode = rawData.slice(start, end);
 
     const data = eval(`(${dataObjectCode})`);
-    if (section in data && key in data[section] && section !== "Work") {
+    if (section === "aboutData" && key === "skills") {
+      const newSkills = newValue.split(",").map((skill) => skill.trim());
+      if (Array.isArray(data[section][key])) {
+        data[section][key] = [];
+        data[section][key].push(...newSkills);
+      }
+    } else if (section in data && key in data[section] && section !== "Work") {
       data[section][key] = newValue;
     } else if (
       section.toLowerCase() === "work" ||
       section.toLocaleLowerCase() === "projectdata"
     ) {
-      data[section][0][key] = newValue;
+      data[section][index][key] = newValue;
     } else {
       throw new Error(
         `Section "${section}" or key "${key}" not found in data.`

@@ -9,7 +9,7 @@ const SideIcon = ({
   isOpen: boolean;
 }) => {
   return (
-    <div className="p-4 sticky top-0 bg-theme-bar">
+    <div className="p-4 sticky top-0 bg-theme-bar z-50">
       <button onClick={() => setIsOpen(!isOpen)}>
         <FiSidebar size={25} />
       </button>

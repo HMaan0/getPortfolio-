@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <main className="flex flex-row h-screen">
-        <Sidebar>Harsh</Sidebar>
+        {/* <Sidebar>Harsh</Sidebar> */}
         <div className="bg-[#525252] w-full p-5 h-full flex flex-col">
           <Navbar></Navbar>
           <div

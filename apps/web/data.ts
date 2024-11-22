@@ -1,7 +1,7 @@
 const data = {
   "Hero": {
-    "name": "Iron man",
-    "des": "I'am Iron man , king of this universe ",
+    "name": "Harsh Maan",
+    "des": "Software Developer with a passion for clean code",
     "image": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/9d/Iron_Man_Infobox.jpg/revision/latest?cb=20240802142023",
     "words": [
       "Eat",
@@ -15,30 +15,33 @@ const data = {
   },
   "Work": [
     {
-      "title": " Captain America",
-      "company": " Avengers infinity war ",
-      "duration": "3 years",
-      "description": "Developed backend APIs."
+      "title": "Harsh",
+      "company": "",
+      "duration": "",
+      "description": ""
+    },
+    {
+      "title": "Maan ",
+      "company": "",
+      "duration": "",
+      "description": ""
     }
   ],
   "projectData": [
     {
-      "title": "Project A",
-      "description": "A web application",
-      "liveLink": "https://blindlysocial.com",
-      "codeLink": "https://github.com/project-a"
+      "title": "",
+      "description": "",
+      "liveLink": "",
+      "codeLink": ""
     }
   ],
   "aboutData": {
     "description": "Passionate about technology.",
     "skills": [
-      "Python",
-      "JavaScript"
-    ],
-    "personalDetails": {
-      "location": "New York",
-      "email": "john@example.com"
-    }
+      "docker",
+      "java",
+      "java"
+    ]
   },
   "contact": {
     "LinkedIn": "john-linkedin",

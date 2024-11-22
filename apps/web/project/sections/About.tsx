@@ -25,7 +25,7 @@ const About = () => {
           </div>
         </>
       ) : null}
-      {(data.aboutData.personalDetails.email.length > 0 ||
+      {/* {(data.aboutData.personalDetails.email.length > 0 ||
         data.aboutData.personalDetails.location.length > 0) && (
         <div>
           <p className="text-2xl font-semibold mb-4">Personal Details</p>
@@ -48,7 +48,7 @@ const About = () => {
             )}
           </ul>
         </div>
-      )}
+      )} */}
     </Card>
   );
 };

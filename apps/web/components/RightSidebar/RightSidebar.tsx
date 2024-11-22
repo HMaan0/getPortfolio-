@@ -12,10 +12,10 @@ const RightSidebar = () => {
   return (
     <>
       <Sidebar
-        className={`${isOpen ? transitionClasses : `w-16 ${transitionClasses}`}`}
+        className={`${isOpen ? transitionClasses : `w-20 ${transitionClasses}`}`}
       >
         <SideIcon setIsOpen={setIsOpen} isOpen={isOpen} />
-        <div className={`${transitionClasses} ${!isOpen && "hidden"}`}>
+        <div className={`${transitionClasses} ${!isOpen && "hidden"} `}>
           <Section />
         </div>
       </Sidebar>
