@@ -1,12 +1,12 @@
 import Navbar from "../components/Navbar/Navbar";
-import Sidebar from "../components/Sidebar/Sidebar";
 import RightSidebar from "../components/RightSidebar/RightSidebar";
+import LeftSidebar from "../components/LeftSidebar/LeftSidebar";
 
 export default function Home() {
   return (
     <>
       <main className="flex flex-row h-screen">
-        {/* <Sidebar>Harsh</Sidebar> */}
+        <LeftSidebar></LeftSidebar>
         <div className="bg-[#525252] w-full p-5 h-full flex flex-col">
           <Navbar></Navbar>
           <div

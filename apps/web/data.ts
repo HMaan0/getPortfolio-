@@ -15,13 +15,13 @@ const data = {
   },
   "Work": [
     {
-      "title": "Harsh",
+      "title": "",
       "company": "",
       "duration": "",
       "description": ""
     },
     {
-      "title": "Maan ",
+      "title": "",
       "company": "",
       "duration": "",
       "description": ""

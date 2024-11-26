@@ -118,8 +118,8 @@ function ContentOfSideBar({ onChildClick }: { onChildClick: () => void }) {
       ) : null}
 
       {data.aboutData.description.length ||
-      data.aboutData.personalDetails.email ||
-      data.aboutData.personalDetails.location.length > 0 ||
+      // data.aboutData.personalDetails.email ||
+      // data.aboutData.personalDetails.location.length > 0 ||
       data.aboutData.skills.map((skill) => skill.length).at(0) ? (
         <button
           onClick={onChildClick}

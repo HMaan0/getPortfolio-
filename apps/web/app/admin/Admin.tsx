@@ -5,6 +5,7 @@ import About from "../../project/sections/About";
 import Contact from "../../project/sections/Contact";
 import HamburgerMenu from "../../project/sections/Hamburger";
 import Hero from "../../project/sections/Hero";
+import Navbar from "../../project/sections/Navbar";
 import Projects from "../../project/sections/Projects";
 import TechStack from "../../project/sections/TechStack";
 import Work from "../../project/sections/Work";
@@ -48,8 +49,8 @@ const Admin = () => {
             </section>
           )}
           {data.aboutData.description.length ||
-          data.aboutData.personalDetails.email ||
-          data.aboutData.personalDetails.location.length > 0 ||
+          // data.aboutData.personalDetails.email ||
+          // data.aboutData.personalDetails.location.length > 0 ||
           data.aboutData.skills.map((skill) => skill.length).at(0) ? (
             <section id="about" className="h-full ">
               <About></About>
