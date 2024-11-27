@@ -6,6 +6,7 @@ import Color from "./Color";
 import Navbar from "./Navbar";
 import SelectCard from "./SelectCard";
 import TechSection from "./TechSection";
+import AnimateStack from "./AnimateStack";
 
 const LeftSection = () => {
   const sections = [
@@ -23,6 +24,7 @@ const LeftSection = () => {
     Navbar: <Navbar />,
     Card: <SelectCard />,
     TechStack: <TechSection />,
+    AnimateStack: <AnimateStack />,
   };
 
   const [isOpen, setIsOpen] = useState(sections.map(() => true));

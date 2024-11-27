@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import icons from "../../lib/icon";
 import { MdDelete } from "react-icons/md";
 import { IconType } from "react-icons";
-import SelectCard from "./SelectCard";
 
 interface IconItem {
   component: IconType;

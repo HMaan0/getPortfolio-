@@ -11,21 +11,27 @@ module.exports = {
     "./src/**/*.{ts,tsx,mdx}",
     "./project/**/*.{js,ts,jsx,tsx}",
   ],
-
+  darkMode: "class",
   theme: {
     extend: {
-      colors: {
-        "theme-border": "#626262",
-        "theme-button": "#343434",
-        "theme-bar": "#1B1B1B",
-
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary_dark: "#212121",
-        primary_light: " white",
-        theme_border: "#00AEFF",
-        "theme-secondary": "#9e2e3b",
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
+      colors: {
+
+  "theme-border": "#626262",
+  "theme-button": "#343434",
+  "theme-bar": "#1B1B1B",
+  "background": "var(--background)",
+  "foreground": "var(--foreground)",
+  "theme_bg_light": "#ffffff",
+  "theme_bg_dark": "black",
+  "primary_dark": "#212121",
+  "primary_light": " white",
+  "theme_secondary": "#9e2e3b",
+  "theme_gradient": "#1d4ed8"
+
+},
     },
   },
   plugins: [],

@@ -1,15 +1,21 @@
 "use client";
+import { Button } from "@repo/ui/Button";
 import DashboardInput from "@repo/ui/DashboardDiv";
+import { useTheme } from "next-themes";
 import { useState } from "react";
 import { BiDesktop, BiMobile } from "react-icons/bi";
-import { BsTablet } from "react-icons/bs";
+import { BsMoonStars, BsTablet } from "react-icons/bs";
+import { MdLightMode } from "react-icons/md";
 
 const ScreenSize = () => {
+  const { theme, setTheme } = useTheme();
   const [selected, setSelected] = useState<string | null>("desktop");
-
+  function changeMode() {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  }
   return (
     <>
-      <div>
+      <div className="flex">
         <DashboardInput>
           <div className="flex justify-center items-center gap-2 ">
             <button
@@ -32,6 +38,9 @@ const ScreenSize = () => {
             </button>
           </div>
         </DashboardInput>
+        <Button onClick={changeMode}>
+          {theme === "light" ? <MdLightMode /> : <BsMoonStars />}
+        </Button>
       </div>
     </>
   );

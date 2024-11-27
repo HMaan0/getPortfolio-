@@ -5,10 +5,10 @@ const TypeWriter = ({ words }: { words: string[] }) => {
   const handleType = () => {};
   const handleDone = () => {};
   return (
-    <span style={{ color: "green", fontWeight: "bold" }}>
+    <span className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl font-semibold">
       <Typewriter
         words={words}
-        loop={5}
+        loop={false}
         cursor
         cursorStyle="_"
         typeSpeed={70}

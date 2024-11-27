@@ -5,10 +5,9 @@ import About from "../../project/sections/About";
 import Contact from "../../project/sections/Contact";
 import HamburgerMenu from "../../project/sections/Hamburger";
 import Hero from "../../project/sections/Hero";
-import Navbar from "../../project/sections/Navbar";
 import Projects from "../../project/sections/Projects";
-import TechStack from "../../project/sections/TechStack";
 import Work from "../../project/sections/Work";
+import Background from "../../project/components/Background/Background";
 const Admin = () => {
   return (
     <>
@@ -18,11 +17,12 @@ const Admin = () => {
         {/* <Navbar></Navbar> */}
       </div>
 
+      <Background />
       <div className=" flex justify-center items-center">
         <div className="mt-20 w-10/12 sm:w-7/12 flex flex-col gap-40">
-          <section id="home" className="h-full ">
+          <section id="home" className="h-full  ">
             <Hero></Hero>
-            <div className="mt-10">
+            <div className="mt-64">
               <Card>
                 <GithubInfo></GithubInfo>
               </Card>

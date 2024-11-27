@@ -1,12 +1,20 @@
+"use client";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import Toggle from "./Toggle";
+import WriteIcon from "./WriteIcon";
+import { writeTailwind } from "../../lib/actions/WriteTailwind";
 
-const colorFor = ["Background", "Card", "Button", "Text"];
-const modes = ["light", "Dark"];
+const colorFor = ["Background", "Card", "Gradient", "Button"];
+const modes = ["Light", "Dark"];
 const Color = () => {
   const [color, setColor] = useState("#111111");
-  const [selected, setSelected] = useState<string | null>(null);
+  const [component, setComponent] = useState<string | null>("Background");
+  const [theme, setTheme] = useState<string | null>("Light");
+
+  async function writeColor() {
+    await writeTailwind(component, theme, color);
+  }
 
   return (
     <div className=" w-full flex flex-col justify-center items-center mb-10 gap-4">
@@ -15,8 +23,8 @@ const Color = () => {
           <Toggle
             key={ele}
             option={ele}
-            selected={selected}
-            onSelect={setSelected}
+            selected={component}
+            onSelect={setComponent}
           />
         ))}
       </div>
@@ -27,11 +35,12 @@ const Color = () => {
             <Toggle
               key={mode}
               option={mode}
-              selected={selected}
-              onSelect={setSelected}
+              selected={theme}
+              onSelect={setTheme}
             ></Toggle>
           </>
         ))}
+        <WriteIcon onClick={writeColor}></WriteIcon>
       </div>
     </div>
   );

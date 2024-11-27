@@ -3,7 +3,7 @@ import data from "../../data";
 
 const Contact = () => {
   return (
-    <footer className="dark:bg-primary_dark p-6 shadow-2xl   mt-10 rounded-lg rounded-b-none">
+    <footer className="dark:bg-primary_dark p-6 bg-primary_light shadow-2xl   mt-10 rounded-lg rounded-b-none">
       <div className="flex flex-col md:flex-row justify-between items-center">
         <div className="mb-4 md:mb-0">
           <p className="text-lg font-semibold">Connect with me:</p>

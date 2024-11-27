@@ -14,9 +14,9 @@ const TechStack = () => {
     rows.push(icons.slice(from, to));
   }
   const [framer] = useState(false);
-  const [hover] = useState(false);
+  const [hover] = useState(true);
   return (
-    <div className="w-full flex flex-col-reverse gap-7 items-center text-2xl sm:3xl xl:text-4xl lg:text-4xl md:text-3xl">
+    <div className="mt-4 w-full flex flex-col-reverse gap-7 items-center text-2xl sm:3xl xl:text-4xl lg:text-4xl md:text-3xl">
       {rows.map((row, rowIndex) => (
         <div
           key={rowIndex}

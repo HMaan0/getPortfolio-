@@ -12,8 +12,8 @@ const Hero = async () => {
       <div className="flex justify-center items-center">
         {data.Hero.image.length > 0 && (
           <div className="flex gap-20 sm:gap-2 sm:flex-row flex-col mt-10 ">
-            <div className="flex flex-col justify-center w-full sm:w-1/2 text-center md:text-start">
-              <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+            <div className="flex flex-col justify-center w-full sm:w-1/2 text-center md:text-start pl-14">
+              <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold ">
                 {data.Hero.name}
               </p>
               <p className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl mt-6">
