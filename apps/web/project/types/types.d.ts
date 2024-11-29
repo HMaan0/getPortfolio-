@@ -96,7 +96,7 @@ export interface Project {
 export interface AboutData {
   description: string;
   skills: string[];
-  personalDetails: {
+  personalDetails?: {
     location: string;
     email: string;
   };

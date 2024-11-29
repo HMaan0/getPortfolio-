@@ -1,12 +1,8 @@
 import { useState } from "react";
 import Toggle from "./Toggle";
 import Card from "../../project/components/Card";
-import {
-  CardBody,
-  CardContainer,
-  CardItem,
-} from "../../project/components/HoverCard";
-const CardType = ["Scale", "3D-Effect", "Digital"];
+import { CardBody, CardContainer } from "../../project/components/HoverCard";
+const CardType = ["None", "Scale", "3D-Effect"];
 const SelectCard = () => {
   const [selected, setSelected] = useState<string | null>(null);
   return (
@@ -46,7 +42,7 @@ function SampleCard({ selected }: { selected: string | null }) {
   return (
     <>
       <Card>
-        <div className="grid gap-4">
+        <div className="grid gap-4 text-black dark:text-white">
           <h6 className="text-3xl font-bold">Heading </h6>
 
           <p>
@@ -58,10 +54,10 @@ function SampleCard({ selected }: { selected: string | null }) {
           </p>
 
           <div className="flex w-full justify-between mt-5">
-            <button className="bg-white px-4 py-2 rounded-lg text-black font-semibold">
+            <button className="bg-black dark:bg-white text-white dark:text-black px-4 py-2 rounded-lg font-semibold">
               Button
             </button>
-            <button className="bg-white px-4 py-2 rounded-lg text-black font-semibold">
+            <button className="bg-black dark:bg-white text-white dark:text-black px-4 py-2 rounded-lg  font-semibold">
               Button
             </button>
           </div>

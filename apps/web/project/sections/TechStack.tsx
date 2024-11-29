@@ -1,8 +1,10 @@
 "use client";
+import { componentsMap } from "./ComponentMap";
 import { CardBody, CardContainer, CardItem } from "../components/HoverCard";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import icons from "../icon";
+import components from "../../component";
 const TechStack = () => {
   const rows = [];
   let to = 0;
@@ -13,8 +15,8 @@ const TechStack = () => {
     from = to - i - 1;
     rows.push(icons.slice(from, to));
   }
-  const [framer] = useState(false);
-  const [hover] = useState(true);
+  const [framer] = useState(components.animatestack.shake);
+  const [hover] = useState(components.animatestack.float);
   return (
     <div className="mt-4 w-full flex flex-col-reverse gap-7 items-center text-2xl sm:3xl xl:text-4xl lg:text-4xl md:text-3xl">
       {rows.map((row, rowIndex) => (
@@ -27,7 +29,10 @@ const TechStack = () => {
           }`}
         >
           {row.map((icon, iconIndex) => {
-            const IconComponent = icon.component;
+            const IconComponent = componentsMap[icon.component];
+
+            console.log(IconComponent);
+
             return (
               <>
                 <div key={iconIndex}>

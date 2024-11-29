@@ -29,7 +29,7 @@ module.exports = {
   "primary_dark": "#212121",
   "primary_light": " white",
   "theme_secondary": "#9e2e3b",
-  "theme_gradient": "#1d4ed8"
+  "theme_gradient": "#606060"
 
 },
     },

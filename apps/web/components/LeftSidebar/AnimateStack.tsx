@@ -1,5 +1,4 @@
 "use client";
-import { SiReact } from "react-icons/si";
 import Toggle from "./Toggle";
 import { useState } from "react";
 
@@ -21,7 +20,7 @@ const AnimateStack = () => {
         ))}
       </div>
 
-      <div className="h-[295px] ">
+      <div className="h-[295px] mb-20">
         <iframe
           src="http://localhost:3000/techstack"
           className="overflow-hidden h-full rounded-lg w-full shadow-2xl shadow-emerald-500/[0.1] border-white/[0.2] border  "

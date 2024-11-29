@@ -1,3 +1,4 @@
+import components from "../../../component";
 import Eyes from "./Eyes";
 import Gradient from "./Gradient";
 import { GridPatternLinearGradient } from "./Grids";
@@ -5,9 +6,9 @@ import { GridPatternLinearGradient } from "./Grids";
 const Background = () => {
   return (
     <>
-      {/* <Gradient /> */}
-      <Eyes />
-      {/* <GridPatternLinearGradient /> */}
+      {components.background.gradient && <Gradient />}
+      {components.background.eyes && <Eyes />}
+      {components.background.grid && <GridPatternLinearGradient />}
     </>
   );
 };

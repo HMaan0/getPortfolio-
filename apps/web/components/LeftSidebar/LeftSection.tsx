@@ -7,6 +7,11 @@ import Navbar from "./Navbar";
 import SelectCard from "./SelectCard";
 import TechSection from "./TechSection";
 import AnimateStack from "./AnimateStack";
+import WriteIcon from "./WriteIcon";
+import { WriteComponent } from "../../lib/actions/WriteComponent";
+import { useRecoilState } from "recoil";
+import { sectionComponent, techStack } from "../../store/component";
+import Backgrounds from "./Backgrounds";
 
 const LeftSection = () => {
   const sections = [
@@ -25,13 +30,36 @@ const LeftSection = () => {
     Card: <SelectCard />,
     TechStack: <TechSection />,
     AnimateStack: <AnimateStack />,
+    Background: <Backgrounds />,
   };
 
   const [isOpen, setIsOpen] = useState(sections.map(() => true));
-
+  const [component] = useRecoilState(sectionComponent);
+  const [techIcon] = useRecoilState(techStack);
   function handleClick(index: number) {
     setIsOpen((prev) => prev.map((open, i) => (i === index ? !open : open)));
   }
+
+  const handleWriteComponent = async (section: string) => {
+    try {
+      const serializedTechIcon = techIcon.map((item) => {
+        if (typeof item.component === "function") {
+          const componentName = item.component.name;
+          return {
+            ...item,
+            component: componentName,
+          };
+        }
+        return item;
+      });
+
+      await WriteComponent(section, component, serializedTechIcon);
+
+      //await WriteComponent(section, component, obj);
+    } catch (error) {
+      console.error("Error writing component:", error);
+    }
+  };
 
   return (
     <div>
@@ -57,8 +85,15 @@ const LeftSection = () => {
               isOpen[index] ? "opacity-100 max-h-screen" : "opacity-0 max-h-0"
             }`}
           >
-            <div className="mb-20 overflow-y-auto custom-scroll">
+            <div className="overflow-y-auto custom-scroll">
               {componentMap[section]}
+              <div
+                className={` ${section === "Color" ? "hidden" : "w-full flex justify-center items-start"}`}
+              >
+                <div className="w-full mb-28 p-4 justify-center items-start flex">
+                  <WriteIcon onClick={() => handleWriteComponent(section)} />
+                </div>
+              </div>
             </div>
           </div>
         </div>

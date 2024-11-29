@@ -14,7 +14,11 @@ const RightSidebar = () => {
       <Sidebar
         className={`${isOpen ? transitionClasses : `w-20 ${transitionClasses}`}`}
       >
-        <SideIcon setIsOpen={setIsOpen} isOpen={isOpen} />
+        <SideIcon
+          setIsOpen={setIsOpen}
+          isOpen={isOpen}
+          className="justify-start"
+        />
         <div className={`${transitionClasses} ${!isOpen && "hidden"} `}>
           <Section />
         </div>

@@ -1,9 +1,11 @@
 "use client";
 import DashboardInput from "@repo/ui/DashboardDiv";
-import React, { useState } from "react";
+import React from "react";
 import icons from "../../lib/icon";
 import { MdDelete } from "react-icons/md";
 import { IconType } from "react-icons";
+import { useRecoilState } from "recoil";
+import { techStack, searchQuery } from "../../store/component";
 
 interface IconItem {
   component: IconType;
@@ -11,8 +13,8 @@ interface IconItem {
 }
 
 const TechSection = () => {
-  const [search, setSearch] = useState("");
-  const [selectedIcons, setSelectedIcons] = useState<IconItem[]>([]);
+  const [search, setSearch] = useRecoilState(searchQuery); // Recoil state for search
+  const [selectedIcons, setSelectedIcons] = useRecoilState(techStack); // Recoil state for selected icons
 
   const filteredIcons = icons
     .filter((icon: IconItem) =>
@@ -25,17 +27,19 @@ const TechSection = () => {
   };
 
   const addIconToArray = (icon: IconItem) => {
-    setSelectedIcons((prevIcons) => [...prevIcons, icon]);
+    const updatedIcons = [...selectedIcons, icon];
+    setSelectedIcons(updatedIcons);
   };
 
   const handleDeleteLast = () => {
-    setSelectedIcons((prevIcons) => prevIcons.slice(0, -1));
+    const updatedIcons = selectedIcons.slice(0, -1);
+    setSelectedIcons(updatedIcons);
   };
 
   return (
     <>
       <div className="py-4 ">
-        <div className="p-4 flex flex-col items-center  justify-center min-h-32 border-2 border-dashed border-gray-300 rounded-md">
+        <div className="p-4 flex flex-col items-center justify-center min-h-32 border-2 border-dashed border-gray-300 rounded-md">
           {selectedIcons.length === 0 ? (
             <span>Click Icon and add here</span>
           ) : (

@@ -17,14 +17,14 @@ const Navbar = () => {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2 text-white font-bold text-lg sm:text-2x "
+            className="flex items-center gap-2 text-black dark:text-white font-bold text-lg sm:text-2x "
           >
             {!isMenuOpen && <ContentOfSideBar />}
           </motion.div>
 
           <motion.button
             onClick={toggleMenu}
-            className="text-xl focus:outline-none text-white"
+            className="text-xl focus:outline-none text-black dark:text-white"
             aria-label="Toggle menu"
             initial={{ opacity: 0, rotate: -180 }}
             animate={{ opacity: 1, rotate: 0 }}
@@ -107,7 +107,7 @@ function NavButton({ to, label }: { to: string; label: string }) {
         to={to}
         smooth={true}
         duration={1000}
-        className="cursor-pointer text-white"
+        className="cursor-pointer text-black dark:text-white"
         aria-label={`Scroll to ${label}`}
       >
         {label}

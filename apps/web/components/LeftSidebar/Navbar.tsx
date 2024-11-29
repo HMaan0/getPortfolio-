@@ -3,14 +3,13 @@ import { useState } from "react";
 import Toggle from "./Toggle";
 
 const Navbar = () => {
-  const [selectedNavbar, setSelectedNavbar] = useState<string | null>(null);
+  const [selectedNavbar, setSelectedNavbar] = useState<string>("");
   const [selectedScreen, setSelectedScreen] = useState<string | null>(null);
 
   const [isMobileScreen, setIsMobileScreen] = useState(true);
 
   const navbarType = ["Hamburger", "Navbar"];
   const screenType = ["Desktop", "Mobile"];
-
   const handleScreenSelect = (screen: string) => {
     setSelectedScreen(screen);
     setIsMobileScreen(screen === "Mobile");
