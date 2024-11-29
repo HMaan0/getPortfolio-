@@ -39,7 +39,6 @@ export async function writeToFile(
     const updatedDataCode = `const data = ${JSON.stringify(data, null, 2)};\n\nexport default data;`;
 
     await writeFile(filePath, updatedDataCode, "utf-8");
-    console.log(`Updated ${key} in section ${section} with value: ${newValue}`);
   } catch (error) {
     console.error("Error updating file:", error);
   }

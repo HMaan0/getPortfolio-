@@ -44,10 +44,6 @@ export async function WriteComponent(
       )}${rawData.slice(end)}`;
 
       await writeFile(filePath, updatedData, "utf-8");
-
-      console.log(
-        `Updated ${sectionL}.${componentL} to true and others to false.`
-      );
     }
   } catch (error) {
     console.error("Error updating component:", error);
@@ -61,21 +57,16 @@ async function componentFile(techIcon: techIcon) {
   const end = rawData.lastIndexOf("]") + 1;
   const dataObjectCode = rawData.slice(start, end);
   const string = JSON.stringify(techIcon);
-  console.log(string.substring(1, string.length - 1));
 
   const data = eval(`(${dataObjectCode})`);
   const evalString = eval(`(${string})`);
-  console.log(evalString);
 
-  console.log(data);
   const newData = [...data, ...evalString];
-  console.log(newData);
+
   const updatedRawData =
     rawData.slice(0, start) +
     JSON.stringify(newData, null, 2) +
     rawData.slice(end);
 
-  // Write back to the file
   await writeFile(filePath, updatedRawData, "utf-8");
-  console.log("File updated successfully!");
 }

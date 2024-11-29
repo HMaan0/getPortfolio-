@@ -29,10 +29,9 @@ export default function Home() {
               }}
             ></iframe>
           </div>
-          <div className="p-10 rounded-[36px] border border-theme-border w-11/12 bottom-10 backdrop-blur-lg absolute ">
-            <Input />
-          </div>
+          <Input />
         </div>
+
         <RightSidebar></RightSidebar>
       </main>
     </>

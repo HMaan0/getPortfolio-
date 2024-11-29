@@ -31,7 +31,7 @@ const TechStack = () => {
           {row.map((icon, iconIndex) => {
             const IconComponent = componentsMap[icon.component];
 
-            console.log(IconComponent);
+            IconComponent;
 
             return (
               <>
