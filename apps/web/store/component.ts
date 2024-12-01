@@ -17,3 +17,8 @@ export const searchQuery = atom<string>({
   key: "searchQuery",
   default: "",
 });
+
+export const undo = atom<{ data: string; fileCode: string }[]>({
+  key: "undo",
+  default: [],
+});

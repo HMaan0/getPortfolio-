@@ -25,30 +25,6 @@ const About = () => {
           </div>
         </>
       ) : null}
-      {/* {(data.aboutData.personalDetails.email.length > 0 ||
-        data.aboutData.personalDetails.location.length > 0) && (
-        <div>
-          <p className="text-2xl font-semibold mb-4">Personal Details</p>
-          <ul className="text-gray-700 dark:text-gray-300">
-            {data.Hero.name.length > 0 && (
-              <li className="mb-2">
-                <strong>Name:</strong> {data.Hero.name}
-              </li>
-            )}
-            {data.aboutData.personalDetails.location.length > 0 && (
-              <li className="mb-2">
-                <strong>Location:</strong>{" "}
-                {data.aboutData.personalDetails.location}
-              </li>
-            )}
-            {data.aboutData.personalDetails.email.length > 0 && (
-              <li>
-                <strong>Email:</strong> {data.aboutData.personalDetails.email}
-              </li>
-            )}
-          </ul>
-        </div>
-      )} */}
     </Card>
   );
 };
