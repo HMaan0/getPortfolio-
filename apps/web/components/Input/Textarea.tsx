@@ -7,6 +7,7 @@ import { promptAtom } from "../../store/prompt";
 import { promptAi } from "../../lib/actions/PromptAi";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { undo } from "../../store/component";
+import UndoRedo from "../Navbar/UndoRedo";
 const Textarea = () => {
   const [prompt, setPrompt] = useRecoilState(promptAtom);
   const [loading, setLoading] = useState(false);
@@ -26,7 +27,6 @@ const Textarea = () => {
       }
     }
   }
-  console.log(undoStack);
 
   return (
     <div className="bg-theme-bar flex rounded-3xl">
@@ -37,7 +37,9 @@ const Textarea = () => {
         className="resize-none w-full p-4 focus:outline-none bg-transparent overflow-hidden"
         onChange={handlePrompt}
       />
-      <div className="mx-2 my-3 flex items-end">
+      <div className="mx-2 my-3 flex items-end gap-7">
+        <UndoRedo></UndoRedo>
+
         {loading ? (
           <>
             <DashboardButton>
@@ -49,9 +51,9 @@ const Textarea = () => {
             <DashboardButton
               disabled={!prompt?.length}
               onClick={submitPrompt}
-              className={`${prompt?.length ? "" : "cursor-not-allowed"}`}
+              className={` ${prompt?.length ? "" : "cursor-not-allowed"}`}
             >
-              <FaArrowUpLong />
+              <FaArrowUpLong size={21} />
             </DashboardButton>
           </>
         )}

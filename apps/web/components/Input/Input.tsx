@@ -26,24 +26,24 @@ const Input: React.FC = () => {
   }, []);
 
   return (
-    <div
-      ref={inputRef}
-      className={`overflow-hidden transition-[width] duration-700 ease-in-out p-5 shadow-md rounded-[36px] border border-theme-border ${
-        isOpen ? "w-[98%]" : "w-20 right-10"
-      } bottom-10 backdrop-blur-lg absolute`}
-    >
-      {isOpen ? (
-        <RecoilRoot>
+    <RecoilRoot>
+      <div
+        ref={inputRef}
+        className={`overflow-hidden  transition-[width] duration-700 ease-in-out p-5 shadow-gray-950 shadow-md rounded-[36px] border border-theme-border ${
+          isOpen ? "w-[98.5%]" : "w-20 right-10"
+        } bottom-10 backdrop-blur-lg absolute`}
+      >
+        {isOpen ? (
           <Textarea />
-        </RecoilRoot>
-      ) : (
-        <DashboardButton onClick={() => setIsOpen(true)}>
-          <div className="p-1 hover:rotate-180 duration-300" title="AI">
-            <FcMindMap />
-          </div>
-        </DashboardButton>
-      )}
-    </div>
+        ) : (
+          <DashboardButton onClick={() => setIsOpen(true)}>
+            <div className="p-1 hover:rotate-180 duration-300" title="AI">
+              <FcMindMap />
+            </div>
+          </DashboardButton>
+        )}
+      </div>
+    </RecoilRoot>
   );
 };
 

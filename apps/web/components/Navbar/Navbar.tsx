@@ -1,17 +1,20 @@
+"use client";
 import { MacNavbar } from "@repo/ui/MacNavbar";
 import ProjectLink from "./ProjectLink";
 import ScreenSize from "./ScreenSize";
-import UndoRedo from "./UndoRedo";
-
+import { DashboardButton } from "@repo/ui/DashboardButton";
+import { CiShare1 } from "react-icons/ci";
 const Navbar = () => {
   return (
     <>
       <MacNavbar>
         <ProjectLink></ProjectLink>
-        <div className="hidden lg:block">
+        <div className="hidden lg:block ">
           <ScreenSize></ScreenSize>
         </div>
-        <UndoRedo></UndoRedo>
+        <DashboardButton>
+          <CiShare1 size={20} /> Preview
+        </DashboardButton>
       </MacNavbar>
     </>
   );
