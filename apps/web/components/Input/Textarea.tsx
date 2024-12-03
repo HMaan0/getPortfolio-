@@ -6,7 +6,7 @@ import { useRecoilState } from "recoil";
 import { promptAtom } from "../../store/prompt";
 import { promptAi } from "../../lib/actions/PromptAi";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { undo } from "../../store/component";
+import { undo } from "../../store/undoRedo";
 import UndoRedo from "../Navbar/UndoRedo";
 const Textarea = () => {
   const [prompt, setPrompt] = useRecoilState(promptAtom);
