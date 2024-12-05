@@ -10,7 +10,7 @@ import Data from "../../project/types/types";
 const Section = () => {
   const typedData: Data = data;
   const dataKeys = Object.keys(typedData);
-  const [isOpen, setIsOpen] = useState(dataKeys.map(() => true));
+  const [isOpen, setIsOpen] = useState(dataKeys.map(() => false));
 
   function handleClick(index: number) {
     setIsOpen((prev) =>
@@ -21,35 +21,33 @@ const Section = () => {
   return (
     <>
       {dataKeys.map((section, index) => (
-        <>
-          <div key={index} className="sticky top-16 bg-theme-bar">
-            <WhiteLine />
-            <div className="flex justify-between items-center p-2 sticky top-0">
-              <button
-                onClick={() => handleClick(index)}
-                className={`hover:bg-white/20 active:bg-white/50 p-2 rounded-full flex justify-center items-center transition-all duration-300 ${
-                  isOpen[index] ? "" : "rotate-180"
-                }`}
-              >
-                <IoIosArrowDown />
-              </button>
-
-              <DashboardButton className="w-min text-sm">
-                {section}
-              </DashboardButton>
-            </div>
-            <div
-              className={` flex flex-col p-4 overflow-hidden transition-all duration-500   ${
-                isOpen[index] ? "opacity-100 max-h-screen" : "opacity-0 max-h-0"
+        <div key={section} className="sticky top-16 bg-theme-bar">
+          <WhiteLine />
+          <div className="flex justify-between items-center p-2 sticky top-0">
+            <button
+              onClick={() => handleClick(index)}
+              className={`hover:bg-white/20 active:bg-white/50 p-2 rounded-full flex justify-center items-center transition-all duration-300 ${
+                isOpen[index] ? "" : "rotate-180"
               }`}
             >
-              <CardItems
-                sectionData={typedData[section as keyof Data]}
-                section={section}
-              />
-            </div>
+              <IoIosArrowDown />
+            </button>
+
+            <DashboardButton className="w-min text-sm">
+              {section}
+            </DashboardButton>
           </div>
-        </>
+          <div
+            className={` flex flex-col p-4 overflow-hidden transition-all duration-500   ${
+              isOpen[index] ? "opacity-100 max-h-screen" : "opacity-0 max-h-0"
+            }`}
+          >
+            <CardItems
+              sectionData={typedData[section as keyof Data]}
+              section={section}
+            />
+          </div>
+        </div>
       ))}
     </>
   );

@@ -17,7 +17,7 @@ const About = () => {
             <p className="text-2xl font-semibold mb-4">Skills</p>
             <ul className="flex flex-wrap gap-4">
               {aboutData.skills.map((skill, index) => (
-                <li key={index}>
+                <li key={skill + index}>
                   <Button>{skill}</Button>
                 </li>
               ))}

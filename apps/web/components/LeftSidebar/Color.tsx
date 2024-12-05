@@ -19,7 +19,7 @@ const Color = () => {
   return (
     <div className=" w-full flex flex-col justify-center items-center mb-10 gap-4">
       <div className="flex gap-1  flex-wrap">
-        {colorFor.map((ele, index) => (
+        {colorFor.map((ele) => (
           <Toggle
             key={ele.toString()}
             option={ele}
@@ -30,15 +30,13 @@ const Color = () => {
       </div>
       <HexColorPicker color={color} onChange={setColor} />
       <div className="flex gap-1">
-        {modes.map((mode, index) => (
-          <>
-            <Toggle
-              key={mode.toString()}
-              option={mode}
-              selected={theme}
-              onSelect={setTheme}
-            ></Toggle>
-          </>
+        {modes.map((mode) => (
+          <Toggle
+            key={mode.toString()}
+            option={mode}
+            selected={theme}
+            onSelect={setTheme}
+          ></Toggle>
         ))}
         <WriteIcon onClick={writeColor}></WriteIcon>
       </div>

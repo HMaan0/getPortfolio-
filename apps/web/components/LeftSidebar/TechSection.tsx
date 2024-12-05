@@ -10,11 +10,12 @@ import { techStack, searchQuery } from "../../store/component";
 interface IconItem {
   component: IconType;
   color: string;
+  id: number;
 }
 
 const TechSection = () => {
-  const [search, setSearch] = useRecoilState(searchQuery); // Recoil state for search
-  const [selectedIcons, setSelectedIcons] = useRecoilState(techStack); // Recoil state for selected icons
+  const [search, setSearch] = useRecoilState(searchQuery);
+  const [selectedIcons, setSelectedIcons] = useRecoilState(techStack);
 
   const filteredIcons = icons
     .filter((icon: IconItem) =>
@@ -44,8 +45,10 @@ const TechSection = () => {
             <span>Click Icon and add here</span>
           ) : (
             <div className="flex flex-wrap gap-6">
-              {selectedIcons.map((icon, index) => (
-                <icon.component key={index} size={30} color={icon.color} />
+              {selectedIcons.map((icon) => (
+                <div key={icon.id}>
+                  <icon.component size={30} color={icon.color} />
+                </div>
               ))}
             </div>
           )}
@@ -72,9 +75,9 @@ const TechSection = () => {
         </DashboardInput>
 
         <div className="mt-7 h-[500px] grid grid-cols-3 gap-7 overflow-x-hidden scrollbar-custom">
-          {filteredIcons.map((icon, index) => (
+          {filteredIcons.map((icon) => (
             <div
-              key={index}
+              key={icon.id}
               className="flex flex-col items-center cursor-pointer"
               onClick={() => handleIconClick(icon)}
             >

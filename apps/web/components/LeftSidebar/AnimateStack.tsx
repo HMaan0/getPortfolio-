@@ -9,14 +9,12 @@ const AnimateStack = () => {
     <>
       <div className="flex gap-1 justify-center flex-wrap mb-10">
         {hoverEffect.map((effect) => (
-          <>
-            <Toggle
-              key={effect}
-              option={effect}
-              selected={selected}
-              onSelect={setSelected}
-            />
-          </>
+          <Toggle
+            key={effect}
+            option={effect}
+            selected={selected}
+            onSelect={setSelected}
+          />
         ))}
       </div>
 

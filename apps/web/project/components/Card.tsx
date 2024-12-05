@@ -6,7 +6,7 @@ const Card = ({
   key,
 }: {
   children: React.ReactNode;
-  key?: number;
+  key?: number | string;
 }) => {
   return (
     <>

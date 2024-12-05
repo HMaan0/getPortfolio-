@@ -4,18 +4,39 @@ import ProjectLink from "./ProjectLink";
 import ScreenSize from "./ScreenSize";
 import { DashboardButton } from "@repo/ui/DashboardButton";
 import { CiShare1 } from "react-icons/ci";
+import { useRecoilValue } from "recoil";
+import { screen } from "../../store/screen";
+import { MacButton } from "@repo/ui/MacButton";
 const Navbar = () => {
+  const screenSize = useRecoilValue(screen);
   return (
     <>
-      <MacNavbar>
-        <ProjectLink></ProjectLink>
-        <div className="hidden lg:block ">
-          <ScreenSize></ScreenSize>
+      {screenSize !== "desktop" ? (
+        <div
+          className={`transition-width duration-300 ${screenSize === "desktop" ? "w-full" : `${screenSize === "table" ? "w-[624px]" : `${screenSize === "mobile" ? "w-[390px]" : "w-[624px]"}`} `}`}
+        >
+          <MacNavbar>
+            <div className="flex items-center justify-center w-full">
+              <ScreenSize></ScreenSize>
+            </div>
+          </MacNavbar>
         </div>
-        <DashboardButton>
-          <CiShare1 size={20} /> Preview
-        </DashboardButton>
-      </MacNavbar>
+      ) : (
+        <MacNavbar>
+          <div className="hidden sm:flex ">
+            <ProjectLink></ProjectLink>
+            <div className="hidden lg:block ">
+              <ScreenSize></ScreenSize>
+            </div>
+          </div>
+          <div className="sm:hidden block">
+            <MacButton />
+          </div>
+          <DashboardButton>
+            <CiShare1 size={20} /> Preview
+          </DashboardButton>
+        </MacNavbar>
+      )}
     </>
   );
 };

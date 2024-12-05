@@ -7,7 +7,7 @@ const Sidebar = ({
 }) => {
   return (
     <div
-      className={`bg-theme-bar w-1/3 overflow-y-scroll custom-scroll ${className}`}
+      className={`bg-theme-bar w-1/3  z-50  overflow-y-scroll custom-scroll ${className}`}
     >
       {children}
     </div>

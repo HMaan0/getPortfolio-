@@ -28,55 +28,47 @@ const CardItems = ({
   return (
     <>
       {Array.isArray(sectionData) ? (
-        <>
-          <div className="overflow-y-auto scrollbar-custom mb-32">
-            {sectionData.map((arr, index) => (
-              <React.Fragment key={index}>
-                <CardLine className="mr-2" onClick={remove}>
-                  {Object.keys(arr).map((key) => (
-                    <div className="flex flex-col gap-1 last:mb-10" key={key}>
-                      {key}
-                      <Inputs
-                        index={index}
-                        value={hideValue ? "" : arr[key]}
-                        section={section}
-                        sectionKey={key}
-                      ></Inputs>
-                    </div>
-                  ))}
-                  {index === sectionData.length - 1 && (
-                    <>
-                      <div className="flex justify-center items-center mb-7">
-                        <DashboardButton onClick={addCard}>
-                          <BiPlus></BiPlus>
-                        </DashboardButton>
-                      </div>
-                    </>
-                  )}
-                </CardLine>
-              </React.Fragment>
-            ))}
-          </div>
-        </>
-      ) : (
-        <>
-          <CardLine>
-            {Object.keys(sectionData).map((key, index) => (
-              <>
-                <div className="flex gap-7 flex-col" key={index}>
+        <div className="overflow-y-auto scrollbar-custom mb-32">
+          {sectionData.map((arr, index) => (
+            <React.Fragment key={arr.title}>
+              <CardLine className="mr-2" onClick={remove}>
+                {Object.keys(arr).map((key) => (
                   <div className="flex flex-col gap-1 last:mb-10" key={key}>
                     {key}
                     <Inputs
-                      value={sectionData[key]}
+                      index={index}
+                      value={hideValue ? "" : arr[key]}
                       section={section}
                       sectionKey={key}
                     ></Inputs>
                   </div>
-                </div>
-              </>
-            ))}
-          </CardLine>
-        </>
+                ))}
+                {index === sectionData.length - 1 && (
+                  <div className="flex justify-center items-center mb-7">
+                    <DashboardButton onClick={addCard}>
+                      <BiPlus></BiPlus>
+                    </DashboardButton>
+                  </div>
+                )}
+              </CardLine>
+            </React.Fragment>
+          ))}
+        </div>
+      ) : (
+        <CardLine>
+          {Object.keys(sectionData).map((key) => (
+            <div className="flex gap-7 flex-col" key={key}>
+              <div className="flex flex-col gap-1 last:mb-10" key={key}>
+                {key}
+                <Inputs
+                  value={sectionData[key]}
+                  section={section}
+                  sectionKey={key}
+                ></Inputs>
+              </div>
+            </div>
+          ))}
+        </CardLine>
       )}
     </>
   );

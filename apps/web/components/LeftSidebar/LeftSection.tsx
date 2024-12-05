@@ -15,13 +15,36 @@ import Backgrounds from "./Backgrounds";
 
 const LeftSection = () => {
   const sections = [
-    "Color",
-    "Navbar",
-    "TechStack",
-    "AnimateStack",
-    "Card",
-    "Background",
-    "Metadata",
+    {
+      id: 1,
+      component: "Color",
+    },
+    {
+      id: 2,
+      component: "Navbar",
+    },
+    {
+      id: 3,
+      component: "TechStack",
+    },
+    {
+      id: 4,
+
+      component: "AnimateStack",
+    },
+    {
+      id: 5,
+
+      component: "Card",
+    },
+    {
+      id: 6,
+      component: "Background",
+    },
+    // {
+    //   id: 7,
+    //   component: "Metadata",
+    // },
   ];
 
   const componentMap: { [key: string]: JSX.Element } = {
@@ -33,7 +56,7 @@ const LeftSection = () => {
     Background: <Backgrounds />,
   };
 
-  const [isOpen, setIsOpen] = useState(sections.map(() => true));
+  const [isOpen, setIsOpen] = useState(sections.map(() => false));
   const [component] = useRecoilState(sectionComponent);
   const [techIcon] = useRecoilState(techStack);
   function handleClick(index: number) {
@@ -64,7 +87,7 @@ const LeftSection = () => {
   return (
     <div>
       {sections.map((section, index) => (
-        <div key={index} className="sticky top-16 bg-theme-bar">
+        <div key={section.id} className="sticky top-16 bg-theme-bar">
           <WhiteLine />
           <div className="flex justify-between items-center p-2 sticky top-0">
             <button
@@ -77,7 +100,7 @@ const LeftSection = () => {
             </button>
 
             <DashboardButton className="w-min text-sm ">
-              {section}
+              {section.component}
             </DashboardButton>
           </div>
           <div
@@ -86,12 +109,14 @@ const LeftSection = () => {
             }`}
           >
             <div className="overflow-y-auto custom-scroll">
-              {componentMap[section]}
+              {componentMap[section.component]}
               <div
-                className={` ${section === "Color" ? "hidden" : "w-full flex justify-center items-start"}`}
+                className={` ${section.component === "Color" ? "hidden" : "w-full flex justify-center items-start"}`}
               >
-                <div className="w-full mb-28 p-4 justify-center items-start flex">
-                  <WriteIcon onClick={() => handleWriteComponent(section)} />
+                <div className="w-full mb-28 last:mb-[100px] p-4 justify-center items-start flex">
+                  <WriteIcon
+                    onClick={() => handleWriteComponent(section.component)}
+                  />
                 </div>
               </div>
             </div>

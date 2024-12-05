@@ -38,8 +38,6 @@ const UndoRedo = () => {
       setLoading({ loading: false, button: null });
     }
   }
-  console.log(undoStack);
-  console.log(redoStack);
 
   async function handleRedo() {
     if (redoStack.length === 0) return "No changes were made";

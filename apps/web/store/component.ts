@@ -4,6 +4,7 @@ import { atom } from "recoil";
 export interface IconItem {
   component: IconType;
   color: string;
+  id: string;
 }
 export const sectionComponent = atom({
   key: "component",

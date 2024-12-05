@@ -11,7 +11,7 @@ const Work = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {data.Work.map((work, index) => (
           <>
-            <Card key={index}>
+            <Card key={work.title}>
               <p className="text-xl sm:text-2xl font-semibold mb-2">
                 {work.title}
               </p>

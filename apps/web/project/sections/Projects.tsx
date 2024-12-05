@@ -11,8 +11,8 @@ const Projects = () => {
         My Projects
       </p>
       <div className=" grid grid-cols-1 md:grid-cols-2 gap-6 ">
-        {data.projectData.map((project, index) => (
-          <Card key={index}>
+        {data.projectData.map((project) => (
+          <Card key={project.title}>
             <p className="text-xl sm:text-2xl font-semibold mb-2">
               {project.title}
             </p>
