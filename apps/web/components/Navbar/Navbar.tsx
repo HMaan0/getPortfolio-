@@ -16,16 +16,16 @@ const Navbar = () => {
           className={`transition-width duration-300 ${screenSize === "desktop" ? "w-full" : `${screenSize === "table" ? "w-[624px]" : `${screenSize === "mobile" ? "w-[390px]" : "w-[624px]"}`} `}`}
         >
           <MacNavbar>
-            <div className="flex items-center justify-center w-full">
+            <div className="flex items-center justify-center w-full ">
               <ScreenSize></ScreenSize>
             </div>
           </MacNavbar>
         </div>
       ) : (
         <MacNavbar>
-          <div className="hidden sm:flex ">
+          <div className="hidden sm:flex w-full justify-start">
             <ProjectLink></ProjectLink>
-            <div className="hidden lg:block ">
+            <div className="hidden lg:flex w-full justify-center ">
               <ScreenSize></ScreenSize>
             </div>
           </div>

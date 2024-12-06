@@ -16,7 +16,7 @@ const SideIcon = ({
       className={`p-4 sticky top-0 w-full flex bg-theme-bar z-50 ${className}`}
     >
       <button onClick={() => setIsOpen(!isOpen)}>
-        <FiSidebar size={25} />
+        <FiSidebar className="sm:text-2xl text-lg" />
       </button>
     </div>
   );

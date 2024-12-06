@@ -7,7 +7,7 @@ const Dashboard = () => {
   return (
     <>
       <RecoilRoot>
-        <div className="sm:w-full w-10/12">
+        <div className="sm:w-full w-10/12 flex justify-center items-center">
           <Navbar></Navbar>
         </div>
         <Workspace />

@@ -51,10 +51,7 @@ const Inputs = ({
           rows={1}
         />
         <button className="" onClick={getFile} disabled={!file}>
-          <BiPencil
-            size={20}
-            className="hover:bg-white/20 active:bg-white/50 w-max h-max p-2 rounded-full flex justify-center items-center transition-all duration-300"
-          />
+          <BiPencil className="hover:bg-white/20 active:bg-white/50 w-max h-max p-2 rounded-full flex justify-center items-center transition-all duration-300 text-lg sm:text-sm" />
         </button>
       </DashboardInput>
     </div>

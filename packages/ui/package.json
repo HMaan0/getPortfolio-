@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./prisma": "./src/prisma/schema.prisma",
     "./DashboardButton": "./src/Button/DashboardButton.tsx",
     "./Button": "./src/Button/Button.tsx",
     "./DashboardDiv": "./src/DashboardDiv.tsx",
