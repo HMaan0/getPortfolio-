@@ -1,6 +1,6 @@
 "use client";
 import { RecoilRoot } from "recoil";
-import Email from "./Email";
+import Email from "./Form";
 import Footer from "./Footer";
 import Google from "./Google";
 import Heading from "./Heading";

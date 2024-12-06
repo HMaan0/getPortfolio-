@@ -1,17 +1,18 @@
 import { DashboardButton } from "@repo/ui/DashboardButton";
 import DashboardInput from "@repo/ui/DashboardDiv";
-import { useRecoilValue } from "recoil";
-import { signin } from "../../store/Signin";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { sessionError, signin } from "../../store/Signin";
 import { useState } from "react";
 import { credentialsSchema } from "../../lib/zod/authSchema";
 import { signIn } from "next-auth/react";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 
 const Email = () => {
   const newUser = useRecoilValue(signin);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState<null | string>(null);
+  const [error, setError] = useRecoilState(sessionError);
+  const router = useRouter();
   async function handleClick() {
     try {
       const validation = credentialsSchema.safeParse({ email, password });
@@ -26,11 +27,17 @@ const Email = () => {
         const res = await signIn("credentials", {
           email,
           password,
+          newUser,
           redirect: false,
         });
         if (res?.ok) {
           router.push("/");
         } else {
+          setError(
+            newUser === true
+              ? "Email already exists"
+              : "Email or Password is Incorrect"
+          );
           console.error(res?.error);
         }
       }
