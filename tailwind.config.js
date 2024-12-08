@@ -8,6 +8,13 @@ module.exports = {
     extend: {
       animation: {
         "spin-slow": "spin 3s linear infinite",
+        blink: "blink 1s ease-in-out infinite",
+      },
+      keyframes: {
+        blink: {
+          "0%, 100%": { opacity: 0 },
+          "50%": { opacity: 1 },
+        },
       },
       colors: {
         "theme-border": "#747474",

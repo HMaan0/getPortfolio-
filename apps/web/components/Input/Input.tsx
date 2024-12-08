@@ -6,7 +6,7 @@ import Textarea from "./Textarea";
 import { RecoilRoot } from "recoil";
 
 const Input: React.FC = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(true);
   const inputRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {

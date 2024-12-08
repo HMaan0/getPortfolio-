@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Providers } from "./Providers";
+import { RecoilRoot } from "recoil";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
