@@ -1,4 +1,5 @@
 import AiTextareaUi from "./AiTextareaUi";
+import AskedQuestion from "./AskedQuestion";
 import PrePrompt from "./PrePrompt";
 
 const HeroSection = () => {
@@ -15,7 +16,11 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-      <section className="h-full"></section>
+      <section className="h-full">
+        <div className="sm:w-10/12 w-10/12 md:w-2/3 lg:w-1/2 gap-5 container m-auto flex items-center flex-col justify-center">
+          <AskedQuestion />
+        </div>
+      </section>
     </>
   );
 };
