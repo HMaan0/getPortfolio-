@@ -27,6 +27,9 @@
     "packages/*"
   ],
   "dependencies": {
+    "@webcontainer/api": "^1.5.1-internal.3",
+    "@xterm/addon-fit": "^0.10.0",
+    "@xterm/xterm": "^5.5.0",
     "bcrypt": "^5.1.1",
     "clsx": "^2.1.1",
     "framer": "^2.4.1",
