@@ -1,5 +1,6 @@
 "use client";
-import { motion } from "framer";
+
+import { motion } from "framer-motion";
 
 const Eyes = () => {
   return (

@@ -3,9 +3,9 @@ import Inputs from "./Inputs";
 import CardLine from "./CardLine";
 import { DashboardButton } from "@repo/ui/DashboardButton";
 import { BiPlus } from "react-icons/bi";
-import { addEmptyCard } from "../../lib/actions/AddCard";
 import { Project, Work } from "../../project/types/types";
-import { removeCard } from "../../lib/actions/RemoveCard";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { toggle, webContainerInstance } from "../../store/webContainer";
 const CardItems = ({
   sectionData,
   section,
@@ -13,13 +13,53 @@ const CardItems = ({
   sectionData: Work[] | Project[];
   section: string;
 }) => {
+  const emptyObj: Work | Project = {};
+  const webContainer = useRecoilValue(webContainerInstance);
   const [hideValue, setHideValue] = useState(false);
+  const setCardToggle = useSetRecoilState(toggle);
 
   async function addCard() {
-    await addEmptyCard(sectionData, section);
+    if (webContainer) {
+      const rawData = await webContainer.fs.readFile("my-app/data.ts", "utf-8");
+      const start = rawData.indexOf("{");
+      const end = rawData.lastIndexOf("}") + 1;
+      const dataObjectCode = rawData.slice(start, end);
+      const data = eval(`(${dataObjectCode})`);
+      const obj = sectionData[0];
+      for (const keys in obj) {
+        emptyObj[keys] = "";
+      }
+      data[section].push(emptyObj);
+      const updatedDataCode = `const data = ${JSON.stringify(data, null, 2)};\n\nexport default data;`;
+      await webContainer.fs.writeFile("my-app/data.ts", updatedDataCode);
+      setCardToggle((prev) => !prev);
+    }
   }
   async function remove() {
-    await removeCard(sectionData, section);
+    if (webContainer) {
+      let rawData = await webContainer.fs.readFile("my-app/data.ts", "utf-8");
+      let start = rawData.indexOf("{");
+      let end = rawData.lastIndexOf("}") + 1;
+      let dataObjectCode = rawData.slice(start, end);
+      let obj = sectionData[0];
+      let data = eval(`(${dataObjectCode})`);
+      if (data[section].length < 2) {
+        await addCard();
+        let rawData = await webContainer.fs.readFile("my-app/data.ts", "utf-8");
+        let start = rawData.indexOf("{");
+        let end = rawData.lastIndexOf("}") + 1;
+        let dataObjectCode = rawData.slice(start, end);
+        let data1 = eval(`(${dataObjectCode})`);
+        data1[section].shift();
+        const updatedDataCode = `const data = ${JSON.stringify(data1, null, 2)};\n\nexport default data;`;
+        await webContainer.fs.writeFile("my-app/data.ts", updatedDataCode);
+      } else {
+        data[section].pop(obj);
+        const updatedDataCode = `const data = ${JSON.stringify(data, null, 2)};\n\nexport default data;`;
+        await webContainer.fs.writeFile("my-app/data.ts", updatedDataCode);
+      }
+      setCardToggle((prev) => !prev);
+    }
     if (sectionData.length === 1) {
       setHideValue(true);
     }

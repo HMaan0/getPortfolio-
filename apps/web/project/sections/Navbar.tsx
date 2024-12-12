@@ -1,6 +1,5 @@
 "use client";
 import { Link as ScrollLink } from "react-scroll";
-import data from "../../data";
 import Links from "./Links";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -54,34 +53,26 @@ const Navbar = () => {
 
 function ContentOfSideBar() {
   const sections = [
-    { id: "home", label: "Home", condition: data?.Hero?.name?.length > 0 },
+    { id: "home", label: "Home", condition: true },
     {
       id: "work",
       label: "Work",
-      condition: data?.Work?.[0]?.title?.length > 0,
+      condition: true,
     },
     {
       id: "projects",
       label: "Projects",
-      condition: data?.projectData?.[0]?.title?.length > 0,
+      condition: true,
     },
     {
       id: "about",
       label: "About",
-      condition:
-        data?.aboutData?.description?.length > 0 ||
-        data?.aboutData?.personalDetails?.email ||
-        data?.aboutData?.personalDetails?.location?.length > 0 ||
-        data?.aboutData?.skills?.[0]?.length > 0,
+      condition: true,
     },
     {
       id: "contact",
       label: "Contact",
-      condition:
-        data?.contact?.Email?.length > 0 ||
-        data?.contact?.Github?.length > 0 ||
-        data?.contact?.LinkedIn?.length > 0 ||
-        data?.contact?.Twitter?.length > 0,
+      condition: true,
     },
   ];
 

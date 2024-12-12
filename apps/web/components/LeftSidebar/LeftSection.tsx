@@ -9,9 +9,10 @@ import TechSection from "./TechSection";
 import AnimateStack from "./AnimateStack";
 import WriteIcon from "./WriteIcon";
 import { WriteComponent } from "../../lib/actions/WriteComponent";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { sectionComponent, techStack } from "../../store/component";
 import Backgrounds from "./Backgrounds";
+import { toggle } from "../../store/webContainer";
 
 const LeftSection = () => {
   const sections = [

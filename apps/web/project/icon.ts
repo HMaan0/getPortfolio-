@@ -96,157 +96,157 @@ import {
 } from "react-icons/si";
 const icons: any = [
   {
-    "component": "SiReact",
-    "color": "#61DAFB"
+    component: "SiReact",
+    color: "#61DAFB",
   },
   {
-    "component": "SiNextdotjs",
-    "color": "black"
+    component: "SiNextdotjs",
+    color: "black",
   },
   {
-    "component": "SiPrisma",
-    "color": "#2D3748"
+    component: "SiPrisma",
+    color: "#2D3748",
   },
   {
-    "component": "SiDocker",
-    "color": "#2496ED"
+    component: "SiDocker",
+    color: "#2496ED",
   },
   {
-    "component": "SiAmazonwebservices",
-    "color": "#FF9900"
+    component: "SiAmazonwebservices",
+    color: "#FF9900",
   },
   {
-    "component": "SiCloudflare",
-    "color": "#F38020"
+    component: "SiCloudflare",
+    color: "#F38020",
   },
   {
-    "component": "SiServerless",
-    "color": "#FD5750"
+    component: "SiServerless",
+    color: "#FD5750",
   },
   {
-    "component": "SiVim",
-    "color": "#019733"
+    component: "SiVim",
+    color: "#019733",
   },
   {
-    "component": "SiVisualstudiocode",
-    "color": "#007ACC"
+    component: "SiVisualstudiocode",
+    color: "#007ACC",
   },
   {
-    "component": "SiExpress",
-    "color": "black"
+    component: "SiExpress",
+    color: "black",
   },
   {
-    "component": "SiPython",
-    "color": "#3776AB"
+    component: "SiPython",
+    color: "#3776AB",
   },
   {
-    "component": "SiFastapi",
-    "color": "#05998B"
+    component: "SiFastapi",
+    color: "#05998B",
   },
   {
-    "component": "SiMysql",
-    "color": "#4479A1"
+    component: "SiMysql",
+    color: "#4479A1",
   },
   {
-    "component": "SiPostgresql",
-    "color": "#336791"
+    component: "SiPostgresql",
+    color: "#336791",
   },
   {
-    "component": "SiOpenai",
-    "color": "#412991"
+    component: "SiOpenai",
+    color: "#412991",
   },
   {
-    "component": "SiFigma",
-    "color": "#F24E1E"
+    component: "SiFigma",
+    color: "#F24E1E",
   },
   {
-    "component": "SiLinux",
-    "color": "yellow"
+    component: "SiLinux",
+    color: "yellow",
   },
   {
-    "component": "SiTypescript",
-    "color": "#2496ED"
+    component: "SiTypescript",
+    color: "#2496ED",
   },
   {
-    "component": "SiJavascript",
-    "color": "yellow"
+    component: "SiJavascript",
+    color: "yellow",
   },
   {
-    "component": "SiGit",
-    "color": "maroon"
+    component: "SiGit",
+    color: "maroon",
   },
   {
-    "component": "SiTailwindcss",
-    "color": "skyblue"
+    component: "SiTailwindcss",
+    color: "skyblue",
   },
   {
-    "component": "SiHtml5",
-    "color": "#E34F26"
+    component: "SiHtml5",
+    color: "#E34F26",
   },
   {
-    "component": "SiCss3",
-    "color": "#1572B6"
+    component: "SiCss3",
+    color: "#1572B6",
   },
   {
-    "component": "SiRedux",
-    "color": "#764ABC"
+    component: "SiRedux",
+    color: "#764ABC",
   },
   {
-    "component": "SiGraphql",
-    "color": "#E10098"
+    component: "SiGraphql",
+    color: "#E10098",
   },
   {
-    "component": "SiSass",
-    "color": "#CC6699"
+    component: "SiSass",
+    color: "#CC6699",
   },
   {
-    "component": "SiMongodb",
-    "color": "#47A248"
+    component: "SiMongodb",
+    color: "#47A248",
   },
   {
-    "component": "SiFirebase",
-    "color": "#FFCA28"
+    component: "SiFirebase",
+    color: "#FFCA28",
   },
   {
-    "component": "SiRedis",
-    "color": "#DC382D"
+    component: "SiRedis",
+    color: "#DC382D",
   },
   {
-    "component": "SiDigitalocean",
-    "color": "#0080FF"
+    component: "SiDigitalocean",
+    color: "#0080FF",
   },
   {
-    "component": "SiNpm",
-    "color": "#CB3837"
+    component: "SiNpm",
+    color: "#CB3837",
   },
   {
-    "component": "SiFlutter",
-    "color": "#02569B"
+    component: "SiFlutter",
+    color: "#02569B",
   },
   {
-    "component": "SiDotnet",
-    "color": "#5C2D91"
+    component: "SiDotnet",
+    color: "#5C2D91",
   },
   {
-    "component": "SiReact",
-    "color": "#61DAFB"
+    component: "SiReact",
+    color: "#61DAFB",
   },
   {
-    "component": "SiNextdotjs",
-    "color": "black"
+    component: "SiNextdotjs",
+    color: "black",
   },
   {
-    "component": "SiPrisma",
-    "color": "#2D3748"
+    component: "SiPrisma",
+    color: "#2D3748",
   },
   {
-    "component": "SiDocker",
-    "color": "#2496ED"
+    component: "SiDocker",
+    color: "#2496ED",
   },
   {
-    "component": "SiAmazonwebservices",
-    "color": "#FF9900"
-  }
+    component: "SiAmazonwebservices",
+    color: "#FF9900",
+  },
 ];
 
 export default icons;

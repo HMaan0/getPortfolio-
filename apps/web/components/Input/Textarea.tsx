@@ -1,5 +1,5 @@
 "use client";
-import { useTextarea } from "../../app/hooks/useTextarea";
+import { useTextarea } from "../../hooks/useTextarea";
 import TextareaUI from "./TextareaUI";
 const Textarea = () => {
   const { prompt, loading, handlePrompt, submitPrompt } = useTextarea();

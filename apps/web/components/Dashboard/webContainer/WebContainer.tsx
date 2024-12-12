@@ -1,18 +1,19 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { useWebContainers } from "../hooks/WebContainer";
+import { useWebContainers } from "../../../hooks/WebContainer";
 import { FitAddon } from "@xterm/addon-fit";
 import { Terminal } from "@xterm/xterm";
 import "@xterm/xterm/css/xterm.css";
-import { useRecoilState } from "recoil";
-import { cloneComplete, getRoot } from "../../store/cloneComplete";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { cloneComplete, getRoot, iFrameUrl } from "../../../store/webContainer";
 
-const Test = () => {
+const WebContainer = () => {
   const terminalRef = useRef<HTMLDivElement | null>(null);
   const webContainer = useWebContainers();
   const [terminalLogs, setTerminalLogs] = useState("");
   const [complete, setComplete] = useRecoilState(cloneComplete);
   const [root, setRoot] = useRecoilState(getRoot);
+  const setUrl = useSetRecoilState(iFrameUrl);
   const [inputWriter, setInputWriter] = useState<
     WritableStreamDefaultWriter<string> | undefined
   >(undefined);
@@ -113,11 +114,16 @@ const Test = () => {
     handleLogs();
   }, [terminalLogs]);
 
+  webContainer?.on("server-ready", (port, url) => {
+    setUrl(url);
+  });
+
   return <div className="w-10/12 sm:w-full h-full" ref={terminalRef}></div>;
 };
 
-export default Test;
+export default WebContainer;
 
 function stripAnsiCodes(text: string): string {
+  // eslint-disable-next-line no-control-regex
   return text.replace(/\x1b\[[0-9;]*[a-zA-Z]/g, "");
 }
