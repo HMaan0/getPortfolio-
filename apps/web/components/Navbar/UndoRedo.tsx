@@ -1,12 +1,11 @@
 "use client";
 import { Button } from "@repo/ui/Button";
 import { BiRedo, BiUndo } from "react-icons/bi";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { Stack, undo } from "../../store/undoRedo";
 import { memo, useState } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { writefile } from "../../lib/actions/UndoRedoWriteFile";
-import { readfile } from "../../lib/actions/UndoRedoReadFile";
+import { webContainerInstance } from "../../store/webContainer";
 
 const UndoRedo = () => {
   const [undoStack, setUndoStack] = useRecoilState(undo);
@@ -15,20 +14,18 @@ const UndoRedo = () => {
     button: string | null;
   }>({ loading: false, button: null });
   const [redoStack, setRedoStack] = useState<Stack>([]);
+  const webContainer = useRecoilValue(webContainerInstance);
   async function handleUndo() {
     if (undoStack.length === 0) return "No changes were made";
 
     setLoading({ loading: true, button: "undo" });
     try {
       const lastAction = undoStack[undoStack.length - 1];
-      const { data: filename, fileCode } = lastAction || {};
-      if (filename && fileCode) {
-        const prevFileCode = await readfile(filename);
-        setRedoStack([
-          ...redoStack,
-          { data: filename, fileCode: prevFileCode },
-        ]);
-        await writefile(filename, fileCode);
+      const { fileName, fileCode } = lastAction || {};
+      if (fileName && fileCode && webContainer) {
+        const prevFileCode = await webContainer?.fs.readFile(fileName, "utf-8");
+        setRedoStack([...redoStack, { fileName, fileCode: prevFileCode }]);
+        await webContainer.fs.writeFile(fileName, fileCode);
         const newUndoStack = undoStack.slice(0, -1);
         setUndoStack(newUndoStack);
       }
@@ -44,15 +41,11 @@ const UndoRedo = () => {
     setLoading({ loading: true, button: "redo" });
     try {
       const lastAction = redoStack[redoStack.length - 1];
-      const { data: filename, fileCode } = lastAction || {};
-      if (filename && fileCode) {
-        await writefile(filename, fileCode);
-
-        const prevFileCode = await readfile(filename);
-        setUndoStack([
-          ...undoStack,
-          { data: filename, fileCode: prevFileCode },
-        ]);
+      const { fileName, fileCode } = lastAction || {};
+      if (fileName && fileCode && webContainer) {
+        await webContainer?.fs.writeFile(fileName, fileCode);
+        const prevFileCode = await webContainer?.fs.readFile(fileName, "utf-8");
+        setUndoStack([...undoStack, { fileName, fileCode: prevFileCode }]);
         const newRedoStack = redoStack.slice(0, -1);
         setRedoStack(newRedoStack);
       }
@@ -62,21 +55,30 @@ const UndoRedo = () => {
       setLoading({ loading: false, button: null });
     }
   }
-
   return (
     <div className="flex gap-2">
-      <Button onClick={handleUndo} disabled={undoStack[0]?.data.length === 0}>
+      <Button
+        onClick={handleUndo}
+        disabled={undoStack[0]?.fileName.length === 0}
+        title="undo"
+      >
         {loading.loading && loading.button === "undo" ? (
           <AiOutlineLoading3Quarters className="animate-spin text-xl" />
         ) : (
-          <BiUndo size={20} />
+          <BiUndo
+            size={20}
+            className={`${undoStack.length === 0 && "cursor-not-allowed"}`}
+          />
         )}
       </Button>
-      <Button onClick={handleRedo}>
+      <Button onClick={handleRedo} title="redo">
         {loading.loading && loading.button === "redo" ? (
           <AiOutlineLoading3Quarters className="animate-spin text-xl" />
         ) : (
-          <BiRedo size={20} />
+          <BiRedo
+            size={20}
+            className={`${redoStack.length === 0 && "cursor-not-allowed"}`}
+          />
         )}
       </Button>
     </div>

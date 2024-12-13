@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 export type Stack = {
-  data: string;
+  fileName: string;
   fileCode: string;
 }[];
 export const undo = atom<Stack>({

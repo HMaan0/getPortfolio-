@@ -1,3 +1,4 @@
+"use client";
 import { DashboardButton } from "@repo/ui/DashboardButton";
 import { WhiteLine } from "@repo/ui/WhiteLine";
 import { useState } from "react";
@@ -8,11 +9,10 @@ import SelectCard from "./SelectCard";
 import TechSection from "./TechSection";
 import AnimateStack from "./AnimateStack";
 import WriteIcon from "./WriteIcon";
-import { WriteComponent } from "../../lib/actions/WriteComponent";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { sectionComponent, techStack } from "../../store/component";
 import Backgrounds from "./Backgrounds";
-import { toggle } from "../../store/webContainer";
+import { webContainerInstance } from "../../store/webContainer";
 
 const LeftSection = () => {
   const sections = [
@@ -56,7 +56,7 @@ const LeftSection = () => {
     AnimateStack: <AnimateStack />,
     Background: <Backgrounds />,
   };
-
+  const webContainer = useRecoilValue(webContainerInstance);
   const [isOpen, setIsOpen] = useState(sections.map(() => false));
   const [component] = useRecoilState(sectionComponent);
   const [techIcon] = useRecoilState(techStack);
@@ -77,9 +77,53 @@ const LeftSection = () => {
         return item;
       });
 
-      await WriteComponent(section, component, serializedTechIcon);
+      if (webContainer) {
+        if (section === "TechStack" && serializedTechIcon) {
+          const rawData = await webContainer.fs.readFile(
+            "my-app/src/icon.ts",
+            "utf-8"
+          );
+          const start = rawData.indexOf("[");
+          const end = rawData.lastIndexOf("]") + 1;
+          const dataObjectCode = rawData.slice(start, end);
+          const string = JSON.stringify(serializedTechIcon);
 
-      //await WriteComponent(section, component, obj);
+          const data = eval(`(${dataObjectCode})`);
+          const evalString = eval(`(${string})`);
+
+          const newData = [...data, ...evalString];
+          const updatedRawData =
+            rawData.slice(0, start) +
+            JSON.stringify(newData, null, 2) +
+            rawData.slice(end);
+
+          await webContainer.fs.writeFile("my-app/src/icon.ts", updatedRawData);
+        } else {
+          const rawData = await webContainer.fs.readFile(
+            "my-app/component.ts",
+            "utf-8"
+          );
+          const start = rawData.indexOf("{");
+          const end = rawData.lastIndexOf("}") + 1;
+          const dataObjectCode = rawData.slice(start, end);
+          const data = eval(`(${dataObjectCode})`);
+
+          let sectionL = section.toLocaleLowerCase();
+          let componentL = component.toLocaleLowerCase();
+          if (!data[sectionL]) {
+            throw new Error(`Section "${sectionL}" not found in the data.`);
+          }
+          Object.keys(data[sectionL]).forEach((key) => {
+            data[sectionL][key] = key === componentL;
+          });
+          const updatedData = `${rawData.slice(0, start)}${JSON.stringify(
+            data,
+            null,
+            2
+          )}${rawData.slice(end)}`;
+          await webContainer.fs.writeFile("my-app/component.ts", updatedData);
+        }
+      }
     } catch (error) {
       console.error("Error writing component:", error);
     }

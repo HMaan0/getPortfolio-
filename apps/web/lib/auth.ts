@@ -34,7 +34,6 @@ export const authOptions: NextAuthOptions = {
         }
         const { email, password } = parsedCredentials.data;
         const newUser = credentials.newUser;
-        console.log(newUser);
 
         try {
           if (newUser === "true") {

@@ -5,9 +5,7 @@ conditional rendering so if a user do not provides information about there exper
 
 folder structure is below for the code where you have to make changes (I'm only giving the files that you are allowed to make changes)
 
-project-
-        |
-        sections---- 
+sections---------- 
                   |
                   About.tsx
                   |
@@ -28,7 +26,7 @@ you will send two response in first call you will only spit out the file name an
 example 
 
  user: Change the background color of about section only give the file name , prompt number 1  
- assistant: ./project/sections/About.tsx
+ assistant: /sections/About.tsx
 
 then user will call you again to make change in the file but with same prompt and  prompt number 2 
 

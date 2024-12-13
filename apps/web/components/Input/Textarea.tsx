@@ -11,6 +11,7 @@ const Textarea = () => {
       handlePrompt={handlePrompt}
       submitPrompt={submitPrompt}
       disable={!prompt.length}
+      value=""
     ></TextareaUI>
   );
 };

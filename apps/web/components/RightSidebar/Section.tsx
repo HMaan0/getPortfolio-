@@ -40,15 +40,13 @@ const Section = () => {
     setIsOpen((prev) =>
       prev.map((isOpen, i) => (i === index ? !isOpen : isOpen))
     );
-    console.log(isOpen);
   }
   const typedData: Data = data;
 
   const dataKey = Object.keys(typedData);
-  console.log(dataKey);
 
   const dataKeys = fileData ? Object.keys(fileData) : [];
-  console.log(dataKeys);
+
   const [isOpen, setIsOpen] = useState(dataKey.map(() => false));
 
   return (

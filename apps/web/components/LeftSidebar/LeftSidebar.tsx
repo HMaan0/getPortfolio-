@@ -3,10 +3,12 @@ import SideIcon from "../RightSidebar/SideIcon";
 import Sidebar from "../Sidebar/Sidebar";
 import { useState } from "react";
 import LeftSection from "./LeftSection";
-import { RecoilRoot } from "recoil";
+import { useRecoilValue } from "recoil";
+import { iFrameUrl } from "../../store/webContainer";
+import SideBarLoading from "../Loading/SideBarLoading";
 const LeftSidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
-
+  const loadingComplete = useRecoilValue(iFrameUrl);
   const transitionClasses = "transition-all duration-300 ";
   return (
     <>
@@ -21,9 +23,11 @@ const LeftSidebar = () => {
           />
         </div>
         <div className={`${transitionClasses} ${!isOpen && "hidden"} `}>
-          <RecoilRoot>
+          {loadingComplete.length > 0 ? (
             <LeftSection></LeftSection>
-          </RecoilRoot>
+          ) : (
+            <SideBarLoading />
+          )}
         </div>
       </Sidebar>
     </>

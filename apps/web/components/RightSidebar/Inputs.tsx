@@ -65,7 +65,7 @@ const Inputs = ({
 
         const updatedDataCode = `const data = ${JSON.stringify(data, null, 2)};\n\nexport default data;`;
         await webContainer.fs.writeFile("my-app/data.ts", updatedDataCode);
-        console.log(file);
+
         setFile(!file);
       } catch (err) {
         console.error("Error writing to file:", err);
