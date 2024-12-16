@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="fixed top-0 left-0 w-full z-50">
+      <div className="fixed top-0 left-0 w-full z-30">
         <nav className="backdrop-blur-lg border border-theme-border rounded-lg mx-4 my-6 sm:mx-8 sm:my-8 px-4 sm:px-6 py-4 lg:py-4 flex justify-between items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}

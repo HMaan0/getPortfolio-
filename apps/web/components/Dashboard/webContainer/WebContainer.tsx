@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import { useWebContainers } from "../../../hooks/WebContainer";
 import { FitAddon } from "@xterm/addon-fit";
 import { Terminal } from "@xterm/xterm";
@@ -121,7 +121,7 @@ const WebContainer = () => {
   return <div className="w-10/12 sm:w-full h-full" ref={terminalRef}></div>;
 };
 
-export default WebContainer;
+export default memo(WebContainer);
 
 function stripAnsiCodes(text: string): string {
   // eslint-disable-next-line no-control-regex

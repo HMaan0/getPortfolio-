@@ -9,7 +9,7 @@ const StarsBackground = () => {
   }));
 
   return (
-    <div className="-z-50 absolute inset-0 overflow-hidden">
+    <div className="-z-30 absolute inset-0 overflow-hidden">
       <div className="w-full h-full relative">
         {stars.map((star) => (
           <div

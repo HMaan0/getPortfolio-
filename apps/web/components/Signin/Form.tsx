@@ -31,7 +31,7 @@ const Email = () => {
           redirect: false,
         });
         if (res?.ok) {
-          router.push("/");
+          router.push("/dashboard");
         } else {
           setError(
             newUser === true

@@ -5,7 +5,7 @@ import { GridPattern } from "./GridBackgorund";
 
 export function GridPatternLinearGradient() {
   return (
-    <div className="absolute h-full flex -z-50 size-full items-center justify-center overflow-hidden rounded-lg  bg-background p-20 ">
+    <div className="absolute h-full flex -z-30 size-full items-center justify-center overflow-hidden rounded-lg  bg-background p-20 ">
       <GridPattern
         width={60}
         height={60}

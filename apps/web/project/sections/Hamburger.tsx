@@ -15,13 +15,13 @@ const HamburgerMenu = () => {
   return (
     <>
       <div
-        className={`items-center fixed top-0 flex flex-row justify-end w-full p-8 md:p-6 backdrop-blur-md md:border-none border-b border-gray-600 md:backdrop-blur-none z-50 ${
+        className={`items-center fixed top-0 flex flex-row justify-end w-full p-8 md:p-6 backdrop-blur-md md:border-none border-b border-gray-600 md:backdrop-blur-none z-30 ${
           isOpen ? "bg-blur" : ""
         }`}
       >
         <button
           onClick={toggleMenu}
-          className="fixed md:p-3 p-6 top-0 z-50 left-3 flex flex-col justify-center items-center w-10 group outline-none"
+          className="fixed md:p-3 p-6 top-0 z-30 left-3 flex flex-col justify-center items-center w-10 group outline-none"
         >
           <motion.div
             animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 8 : 0 }}
@@ -49,7 +49,7 @@ const HamburgerMenu = () => {
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="h-full fixed z-50 top-0 left-0 mt-20 sm:w-2/12 w-11/12"
+            className="h-full fixed z-30 top-0 left-0 mt-20 sm:w-2/12 w-11/12"
           >
             <ContentOfSideBar onChildClick={toggleMenu} />
           </motion.div>

@@ -12,7 +12,7 @@ const RightSidebar = () => {
   return (
     <>
       <Sidebar
-        className={`${isOpen ? `right-0 w-10/12 h-full absolute z-50 sm:static sm:w-1/3 sm:right-auto sm:z-0 sm:h-auto ${transitionClasses}` : `w-10 sm:w-20 ${transitionClasses}`}`}
+        className={`${isOpen ? `right-0 w-10/12 h-full absolute z-30 sm:static sm:w-1/3 sm:right-auto sm:z-0 sm:h-auto ${transitionClasses}` : `w-10 sm:w-20 ${transitionClasses}`}`}
       >
         <SideIcon
           setIsOpen={setIsOpen}

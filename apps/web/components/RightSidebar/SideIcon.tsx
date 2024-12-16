@@ -13,7 +13,7 @@ const SideIcon = ({
 }) => {
   return (
     <div
-      className={`p-4 sticky top-0 w-full flex bg-theme-bar z-50 ${className}`}
+      className={`p-4 sticky top-0 w-full flex bg-theme-bar z-30 ${className}`}
     >
       <button onClick={() => setIsOpen(!isOpen)}>
         <FiSidebar className="sm:text-2xl text-lg" />

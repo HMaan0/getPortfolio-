@@ -13,9 +13,9 @@ const LeftSidebar = () => {
   return (
     <>
       <Sidebar
-        className={`${isOpen ? `w-10/12 h-full absolute z-50 sm:static sm:w-1/3 sm:z-0 sm:h-auto ${transitionClasses}` : `sm:w-20 w-10 ${transitionClasses}`}`}
+        className={`${isOpen ? `w-10/12 h-full absolute z-30 sm:static sm:w-1/3 sm:z-0 sm:h-auto ${transitionClasses}` : `sm:w-20 w-10 ${transitionClasses}`}`}
       >
-        <div className="flex justify-end bg-theme-bar z-50 sticky top-0 w-full ">
+        <div className="flex justify-end bg-theme-bar z-30 sticky top-0 w-full ">
           <SideIcon
             setIsOpen={setIsOpen}
             isOpen={isOpen}

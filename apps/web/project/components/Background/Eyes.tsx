@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const Eyes = () => {
   return (
     <>
-      <div className="flex justify-between items-center absolute w-full -z-50  ">
+      <div className="flex justify-between items-center absolute w-full -z-30  ">
         <div className="w-full">
           {" "}
           <motion.svg
