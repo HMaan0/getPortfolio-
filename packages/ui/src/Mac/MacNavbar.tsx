@@ -1,6 +1,14 @@
-export const MacNavbar = ({ children }: { children: React.ReactNode }) => {
+export const MacNavbar = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
   return (
-    <nav className="w-full items-center justify-between bg-theme-bar p-3 rounded-t-[36px] flex border-b border-theme-border ">
+    <nav
+      className={`w-full items-center justify-between bg-theme-bar p-3 flex border-b border-theme-border ${className}`}
+    >
       {children}
     </nav>
   );
