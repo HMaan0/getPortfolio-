@@ -7,7 +7,6 @@ const Eyes = () => {
     <>
       <div className="flex justify-between items-center absolute w-full -z-30  ">
         <div className="w-full">
-          {" "}
           <motion.svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 500 500"

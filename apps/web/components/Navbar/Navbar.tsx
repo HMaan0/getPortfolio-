@@ -7,12 +7,13 @@ import { useRecoilValue } from "recoil";
 import { preview, screen } from "../../store/screen";
 import { MacButton } from "@repo/ui/MacButton";
 import { BiDownload } from "react-icons/bi";
-import { webContainerInstance } from "../../store/webContainer";
+import { iFrameUrl, webContainerInstance } from "../../store/webContainer";
 import JSZip from "jszip";
 const Navbar = () => {
   const screenSize = useRecoilValue(screen);
   const webContainer = useRecoilValue(webContainerInstance);
   const fullScreen = useRecoilValue(preview);
+  const url = useRecoilValue(iFrameUrl);
   const downloadSrcCode = async () => {
     if (webContainer) {
       try {
@@ -80,7 +81,11 @@ const Navbar = () => {
           <div className="sm:hidden block">
             <MacButton />
           </div>
-          <DashboardButton onClick={downloadSrcCode}>
+          <DashboardButton
+            onClick={downloadSrcCode}
+            disabled={url.length === 0}
+            className={`${url.length === 0 && "cursor-not-allowed"}`}
+          >
             <BiDownload /> Download
           </DashboardButton>
         </MacNavbar>

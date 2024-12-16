@@ -70,9 +70,9 @@ const WebContainer = () => {
           }, 5000);
         }
 
-        terminal.onData((data) => {
-          input?.write(data);
-        });
+        // terminal.onData((data) => {
+        //   input?.write(data);
+        // });
 
         return shellProcess;
       } catch (error) {
@@ -118,7 +118,12 @@ const WebContainer = () => {
     setUrl(url);
   });
 
-  return <div className="w-10/12 sm:w-full h-full" ref={terminalRef}></div>;
+  return (
+    <div
+      className=" w-10/12 sm:w-full h-full rounded-b-[36px]"
+      ref={terminalRef}
+    ></div>
+  );
 };
 
 export default memo(WebContainer);

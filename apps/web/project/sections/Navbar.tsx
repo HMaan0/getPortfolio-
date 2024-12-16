@@ -4,26 +4,26 @@ import Links from "./Links";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Navbar = () => {
+const NavbarComponent = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!isMenuOpen);
 
   return (
     <div>
-      <div className="fixed top-0 left-0 w-full z-30">
-        <nav className="backdrop-blur-lg border border-theme-border rounded-lg mx-4 my-6 sm:mx-8 sm:my-8 px-4 sm:px-6 py-4 lg:py-4 flex justify-between items-center">
+      <div className=" w-full z-30">
+        <nav className="backdrop-blur-lg border border-theme-border rounded-lg mx-2 my-3 px-2 py-2  flex justify-between items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2 text-black dark:text-white font-bold text-lg sm:text-2x "
+            className="flex items-center gap-2 text-black dark:text-white font-bold text-sm "
           >
             {!isMenuOpen && <ContentOfSideBar />}
           </motion.div>
 
           <motion.button
             onClick={toggleMenu}
-            className="text-xl focus:outline-none text-black dark:text-white"
+            className="text-md focus:outline-none text-black dark:text-white"
             aria-label="Toggle menu"
             initial={{ opacity: 0, rotate: -180 }}
             animate={{ opacity: 1, rotate: 0 }}
@@ -35,7 +35,7 @@ const Navbar = () => {
           <AnimatePresence>
             {isMenuOpen && (
               <motion.div
-                className="flex-grow justify-end md:flex flex-row gap-9 w-full"
+                className="flex-grow justify-end md:flex flex-row gap-4 w-full"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
@@ -69,15 +69,10 @@ function ContentOfSideBar() {
       label: "About",
       condition: true,
     },
-    {
-      id: "contact",
-      label: "Contact",
-      condition: true,
-    },
   ];
 
   return (
-    <motion.div className="flex gap-4">
+    <motion.div className="flex gap-2">
       {sections
         .filter((section) => section.condition)
         .map((section) => (
@@ -107,4 +102,4 @@ function NavButton({ to, label }: { to: string; label: string }) {
   );
 }
 
-export default Navbar;
+export default NavbarComponent;

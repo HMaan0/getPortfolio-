@@ -1,6 +1,9 @@
 "use client";
 import { useState } from "react";
 import Toggle from "./Toggle";
+import { GridPattern } from "../../project/components/Background/GridBackgorund";
+import { GridPatternLinearGradient } from "../../project/components/Background/Grids";
+import Gradient from "../../app/background/gradient/page";
 
 const Backgrounds = () => {
   const [selectedBackground, setSelectedBackground] = useState<string>("None");
@@ -17,24 +20,6 @@ const Backgrounds = () => {
               onSelect={setSelectedBackground}
             />
           ))}
-        </div>
-        <div>
-          {selectedBackground !== "None" && (
-            <div className="h-96">
-              <iframe
-                src={`http://localhost:3000/background/${selectedBackground.toLowerCase()}`}
-                className="h-full rounded-lg w-full shadow-2xl shadow-emerald-500/[0.1] border-white/[0.2] border  "
-                style={{
-                  width: "260%",
-                  height: "200%",
-                  transform: "scale(0.40)",
-                  transformOrigin: "0 0",
-                  border: "none",
-                  display: "block",
-                }}
-              ></iframe>
-            </div>
-          )}
         </div>
       </div>
     </>
