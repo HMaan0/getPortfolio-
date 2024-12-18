@@ -65,7 +65,7 @@ const WebContainer = () => {
         if (input) {
           setTimeout(async () => {
             await input.write(
-              "npx create-next-app@latest --example https://github.com/Harsh-deepsingh/Templates- my-app \n"
+              "npx create-next-app@latest --example https://github.com/HMaan0/Templates- my-app \n"
             );
           }, 5000);
         }
