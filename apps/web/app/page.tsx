@@ -1,4 +1,5 @@
 import HeroSection from "../components/Landing/Hero/HeroSection";
+import PaymentSection from "../components/Landing/Hero/PaymentSection";
 import QASection from "../components/Landing/Hero/QASection";
 import Nav from "../components/Landing/Nav/Nav";
 import Gradient from "../project/components/Background/Gradient";
@@ -12,6 +13,9 @@ export default function Home() {
         <Nav />
         <HeroSection />
         <Gradient />
+        <section className="h-full py-10 px-14 mb-32">
+          <PaymentSection />
+        </section>
         <section className="h-full">
           <QASection />
         </section>

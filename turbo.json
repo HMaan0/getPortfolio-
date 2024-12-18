@@ -13,15 +13,6 @@
     "dev": {
       "cache": false,
       "persistent": true
-    },
-
-    "tasks": {
-      "db:generate": {
-        "cache": false
-      },
-      "db:push": {
-        "cache": false
-      }
     }
   }
 }

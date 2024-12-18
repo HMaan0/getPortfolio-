@@ -13,19 +13,19 @@ const QASection = () => {
         </h4>
         <AskedQuestion
           question="What is Get Portfolio?"
-          answer="Rollout is an AI-powered landing page builder that allows you to create stunning, professional websites in minutes without any coding."
+          answer="Get Portfolio is an AI-powered Portfolio website builder that allows you to create stunning, professional websites in minutes without any coding."
         />
         <AskedQuestion
-          question="What is Get Portfolio?"
-          answer="Rollout is an AI-powered landing page builder that allows you to create stunning, professional websites in minutes without any coding."
+          question="How does Get Portfolio work?"
+          answer="Simply describe your desired changes in natural language, and watch as our AI instantly transforms your ideas into a polished website."
         />
         <AskedQuestion
-          question="What is Get Portfolio?"
-          answer="Rollout is an AI-powered landing page builder that allows you to create stunning, professional websites in minutes without any coding."
+          question="Do I need coding skills to use Get Portfolio?"
+          answer="Not at all! Get Portfolio is designed for everyone. No coding skills are required – just your ideas and our AI will do the rest."
         />
         <AskedQuestion
-          question="What is Get Portfolio?"
-          answer="Rollout is an AI-powered landing page builder that allows you to create stunning, professional websites in minutes without any coding."
+          question="What is difference between free and premium user?"
+          answer=" Free users can create a portfolio website with customizable text, sections, and colors, but lack access to AI features. Premium users enjoy advanced AI tools, enhanced customization options, and additional features for a more personalized and dynamic experience."
         />
       </div>
     </>
