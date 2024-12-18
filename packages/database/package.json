@@ -12,6 +12,6 @@
   },
   "scripts": {
     "db:generate": "prisma generate",
-    "db:push": "prisma db push --skip-generate"
+    "db:push": "prisma migrate dev --skip-generate"
   }
 }
