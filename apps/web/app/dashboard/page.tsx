@@ -1,10 +1,10 @@
 import React from "react";
-import Dashboard from "../../components/Dashboard/Dashboard";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import RightSidebar from "../../components/RightSidebar/RightSidebar";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
 import { redirect } from "next/navigation";
+import Dashboard from "../../components/Dashboard/Dashboard";
 const page = async () => {
   const session = await getServerSession(authOptions);
 

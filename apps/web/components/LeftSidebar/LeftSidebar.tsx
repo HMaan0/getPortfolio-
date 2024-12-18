@@ -7,7 +7,7 @@ import { useRecoilValue } from "recoil";
 import { iFrameUrl } from "../../store/webContainer";
 import SideBarLoading from "../Loading/SideBarLoading";
 const LeftSidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const loadingComplete = useRecoilValue(iFrameUrl);
   const transitionClasses = "transition-all duration-300 ";
   return (

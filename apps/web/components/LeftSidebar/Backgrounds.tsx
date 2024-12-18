@@ -1,10 +1,6 @@
 "use client";
 import { useState } from "react";
 import Toggle from "./Toggle";
-import { GridPattern } from "../../project/components/Background/GridBackgorund";
-import { GridPatternLinearGradient } from "../../project/components/Background/Grids";
-import Gradient from "../../app/background/gradient/page";
-
 const Backgrounds = () => {
   const [selectedBackground, setSelectedBackground] = useState<string>("None");
   const backgroundType = ["None", "Gradient", "Eyes", "Grids"];

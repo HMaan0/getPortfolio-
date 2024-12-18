@@ -75,12 +75,15 @@ const CardItems = ({
                 {Object.keys(arr).map((key) => (
                   <div className="flex flex-col gap-1 last:mb-10" key={key}>
                     {key}
-                    <Inputs
-                      index={index}
-                      value={hideValue ? "" : arr[key]}
-                      section={section}
-                      sectionKey={key}
-                    ></Inputs>
+
+                    <>
+                      <Inputs
+                        index={index}
+                        value={hideValue ? "" : (arr[key] ?? "")}
+                        section={section}
+                        sectionKey={key}
+                      ></Inputs>
+                    </>
                   </div>
                 ))}
                 {index === sectionData.length - 1 && (

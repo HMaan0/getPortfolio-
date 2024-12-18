@@ -4,11 +4,29 @@ import { useRecoilValue } from "recoil";
 import { preview, screen } from "../../store/screen";
 import { iFrameUrl } from "../../store/webContainer";
 import WebContainer from "./webContainer/WebContainer";
+import { useEffect, useState } from "react";
+import LoadingText from "./LoadingText";
 
 const Workspace = () => {
   const screenSize = useRecoilValue(screen);
   const url = useRecoilValue(iFrameUrl);
   const fullScreen = useRecoilValue(preview);
+  const [showLoadingText, setShowLoadingText] = useState(false);
+  useEffect(() => {
+    if (url.length > 0) {
+      setShowLoadingText(true);
+
+      const loadingTimer = setTimeout(() => {
+        setShowLoadingText(false);
+      }, 45000);
+      return () => {
+        clearTimeout(loadingTimer);
+      };
+    } else {
+      setShowLoadingText(false);
+    }
+    return;
+  }, [url]);
 
   return (
     <>
@@ -21,6 +39,11 @@ const Workspace = () => {
               maxHeight: "calc(100vh - 20px)",
             }}
           >
+            {showLoadingText && (
+              <>
+                <LoadingText />
+              </>
+            )}
             <iframe
               src={url}
               className="transition-all duration-1000 w-full h-full fixed"

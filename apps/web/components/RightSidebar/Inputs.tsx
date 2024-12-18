@@ -14,21 +14,23 @@ const Inputs = ({
   value: string;
   section: string;
   sectionKey: string;
-  index: number;
+  index?: number;
 }) => {
-  const [input, setInput] = useState(value);
+  const [input, setInput] = useState<string>(value);
   const [file, setFile] = useState(false);
   const webContainer = useRecoilValue(webContainerInstance);
   const handleChange = (e: { target: { value: SetStateAction<string> } }) => {
-    setInput(e.target.value);
-    if (!file) setFile(true);
+    if (value !== undefined) {
+      setInput(e.target.value);
+      if (!file) setFile(true);
+    }
   };
 
   const getFile = async (
     value: string,
     section: string,
     sectionKey: string,
-    index: number
+    index: number | undefined
   ) => {
     if (webContainer) {
       try {
@@ -40,12 +42,19 @@ const Inputs = ({
         const end = rawData.lastIndexOf("}") + 1;
         const dataObjectCode = rawData.slice(start, end);
         const data = eval(`(${dataObjectCode})`);
+
         if (section === "aboutData" && sectionKey === "skills") {
           const newSkills = input.split(",").map((skill) => skill.trim());
           if (Array.isArray(data[section][sectionKey])) {
             data[section][sectionKey] = [];
             data[section][sectionKey].push(...newSkills);
           }
+        } else if (section === "Hero" && sectionKey === "words") {
+          const typeWriter = input.split(",").map((skill) => skill.trim());
+          console.log(typeWriter);
+          data[section][sectionKey] = [];
+          data[section][sectionKey].push(...typeWriter);
+          console.log(data[section][sectionKey]);
         } else if (
           section in data &&
           sectionKey in data[section] &&
@@ -56,7 +65,7 @@ const Inputs = ({
           section.toLowerCase() === "work" ||
           section.toLocaleLowerCase() === "projectdata"
         ) {
-          data[section][index][sectionKey] = input;
+          if (index) data[section][index][sectionKey] = input;
         } else {
           throw new Error(
             `Section "${section}" or sectionKey "${sectionKey}" not found in data.`
@@ -65,6 +74,8 @@ const Inputs = ({
 
         const updatedDataCode = `const data = ${JSON.stringify(data, null, 2)};\n\nexport default data;`;
         await webContainer.fs.writeFile("my-app/data.ts", updatedDataCode);
+        const code = await webContainer.fs.readFile("my-app/data.ts", "utf-8");
+        console.log(code);
 
         setFile(!file);
       } catch (err) {
@@ -89,13 +100,15 @@ const Inputs = ({
           onChange={handleChange}
           rows={1}
         />
-        <button
-          className=""
-          onClick={() => getFile(value, section, sectionKey, index)}
-          disabled={!file}
-        >
-          <BiPencil className="hover:bg-white/20 active:bg-white/50 w-max h-max p-2 rounded-full flex justify-center items-center transition-all duration-300 text-lg sm:text-sm" />
-        </button>
+
+        <>
+          <button
+            onClick={() => getFile(value, section, sectionKey, index)}
+            disabled={!file}
+          >
+            <BiPencil className="hover:bg-white/20 active:bg-white/50 w-max h-max p-2 rounded-full flex justify-center items-center transition-all duration-300 text-lg sm:text-sm" />
+          </button>
+        </>
       </DashboardInput>
     </div>
   );

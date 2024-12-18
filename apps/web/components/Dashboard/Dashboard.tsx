@@ -14,7 +14,6 @@ const Dashboard = () => {
       <>
         {fullScreen ? (
           <>
-            {" "}
             <div
               className={`${fullScreen ? "h-full z-50 fixed w-full flex flex-col justify-center items-center" : "sm:w-full w-10/12  flex justify-center items-center"}  `}
             >
@@ -24,7 +23,6 @@ const Dashboard = () => {
           </>
         ) : (
           <>
-            {" "}
             <div
               className={`${fullScreen ? "h-full z-50 fixed w-full" : "sm:w-full w-10/12  flex justify-center items-center"}  `}
             >

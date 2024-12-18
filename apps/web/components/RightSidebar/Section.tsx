@@ -77,10 +77,7 @@ const Section = () => {
                     : "opacity-0 max-h-0"
                 }`}
               >
-                <CardItems
-                  sectionData={fileData[section as keyof Data]}
-                  section={section}
-                />
+                <CardItems sectionData={fileData[section]} section={section} />
               </div>
             </div>
           ))}

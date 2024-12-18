@@ -84,6 +84,7 @@ export interface Work {
   company: string;
   duration: string;
   description: string;
+  [key: string]: string;
 }
 
 export interface Project {
@@ -91,6 +92,7 @@ export interface Project {
   description?: string;
   liveLink?: string;
   codeLink?: string;
+  [key: string]: string;
 }
 
 export interface AboutData {
@@ -116,6 +118,7 @@ export interface Data {
   projectData: Project[];
   aboutData: AboutData;
   contact: Contact;
+  [key: string];
 }
 
 export default Data;

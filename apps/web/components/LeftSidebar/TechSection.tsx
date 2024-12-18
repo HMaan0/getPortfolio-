@@ -10,7 +10,7 @@ import { techStack, searchQuery } from "../../store/component";
 interface IconItem {
   component: IconType;
   color: string;
-  id: number;
+  id: string;
 }
 
 const TechSection = () => {
@@ -21,7 +21,7 @@ const TechSection = () => {
     .filter((icon: IconItem) =>
       icon.component.name.toLowerCase().includes(search.toLowerCase())
     )
-    .filter((icon) => !selectedIcons.includes(icon));
+    .filter((icon: IconItem) => !selectedIcons.includes(icon));
 
   const handleIconClick = (icon: IconItem) => {
     addIconToArray(icon);
