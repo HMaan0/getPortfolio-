@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { webContainerInstance } from "../../store/webContainer";
 
 const LoadingTimer = () => {
   const loadingMessages = [
@@ -26,7 +27,7 @@ const LoadingTimer = () => {
     }, 5000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [webContainerInstance]);
 
   return (
     <div className="flex items-center justify-center h-full w-full ">
@@ -46,4 +47,4 @@ const LoadingTimer = () => {
   );
 };
 
-export default LoadingTimer;
+export default memo(LoadingTimer);

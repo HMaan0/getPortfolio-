@@ -1,3 +1,4 @@
+import { memo } from "react";
 import LoadingTimer from "./LoadingTimer";
 
 const LoadingText = () => {
@@ -10,4 +11,4 @@ const LoadingText = () => {
   );
 };
 
-export default LoadingText;
+export default memo(LoadingText);

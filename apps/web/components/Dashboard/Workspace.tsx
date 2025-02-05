@@ -1,21 +1,20 @@
 "use client";
 
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { preview, screen } from "../../store/screen";
 import { iFrameUrl } from "../../store/webContainer";
 import WebContainer from "./webContainer/WebContainer";
 import { useEffect, useState } from "react";
 import LoadingText from "./LoadingText";
+import { showLoading } from "../../store/showLoading";
 
 const Workspace = () => {
   const screenSize = useRecoilValue(screen);
   const url = useRecoilValue(iFrameUrl);
   const fullScreen = useRecoilValue(preview);
-  const [showLoadingText, setShowLoadingText] = useState(false);
+  const [showLoadingText, setShowLoadingText] = useRecoilState(showLoading);
   useEffect(() => {
     if (url.length > 0) {
-      setShowLoadingText(true);
-
       const loadingTimer = setTimeout(() => {
         setShowLoadingText(false);
       }, 45000);
@@ -23,7 +22,7 @@ const Workspace = () => {
         clearTimeout(loadingTimer);
       };
     } else {
-      setShowLoadingText(false);
+      setShowLoadingText(true);
     }
     return;
   }, [url]);

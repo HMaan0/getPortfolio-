@@ -51,10 +51,8 @@ const Inputs = ({
           }
         } else if (section === "Hero" && sectionKey === "words") {
           const typeWriter = input.split(",").map((skill) => skill.trim());
-          console.log(typeWriter);
           data[section][sectionKey] = [];
           data[section][sectionKey].push(...typeWriter);
-          console.log(data[section][sectionKey]);
         } else if (
           section in data &&
           sectionKey in data[section] &&
@@ -65,7 +63,12 @@ const Inputs = ({
           section.toLowerCase() === "work" ||
           section.toLocaleLowerCase() === "projectdata"
         ) {
-          if (index) data[section][index][sectionKey] = input;
+          console.log("helo");
+          console.log(index);
+
+          if (index !== undefined) {
+            data[section][index][sectionKey] = input;
+          }
         } else {
           throw new Error(
             `Section "${section}" or sectionKey "${sectionKey}" not found in data.`
@@ -74,8 +77,7 @@ const Inputs = ({
 
         const updatedDataCode = `const data = ${JSON.stringify(data, null, 2)};\n\nexport default data;`;
         await webContainer.fs.writeFile("my-app/data.ts", updatedDataCode);
-        const code = await webContainer.fs.readFile("my-app/data.ts", "utf-8");
-        console.log(code);
+        await webContainer.fs.readFile("my-app/data.ts", "utf-8");
 
         setFile(!file);
       } catch (err) {
