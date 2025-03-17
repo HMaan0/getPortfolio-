@@ -4,7 +4,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { preview, screen } from "../../store/screen";
 import { iFrameUrl } from "../../store/webContainer";
 import WebContainer from "./webContainer/WebContainer";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import LoadingText from "./LoadingText";
 import { showLoading } from "../../store/showLoading";
 
@@ -15,12 +15,7 @@ const Workspace = () => {
   const [showLoadingText, setShowLoadingText] = useRecoilState(showLoading);
   useEffect(() => {
     if (url.length > 0) {
-      const loadingTimer = setTimeout(() => {
-        setShowLoadingText(false);
-      }, 45000);
-      return () => {
-        clearTimeout(loadingTimer);
-      };
+      setShowLoadingText(false);
     } else {
       setShowLoadingText(true);
     }

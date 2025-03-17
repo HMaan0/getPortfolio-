@@ -18,7 +18,7 @@ export function useTextarea() {
     if (prompt) {
       setLoading(true);
       let fileName = await promptAi(prompt);
-      fileName = `my-app/src${fileName?.trim()}`;
+      fileName = `vite-template/src${fileName?.trim()}`;
       if (webContainer && typeof fileName === "string") {
         const currentCode = await webContainer.fs.readFile(fileName, "utf-8");
         const changedCode = await callOpenAi(

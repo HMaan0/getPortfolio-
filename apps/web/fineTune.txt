@@ -62,10 +62,7 @@ Navbar.tsx
 
 Purpose: Displays the main navigation bar.
 Key Features: Integrates animations from Framer Motion for the menu. Includes Hamburger.tsx for mobile navigation and integrates the sidebar with social media links from Links.tsx.
-TechStack.tsx
 
-Purpose: Displays the technologies used in the portfolio.
-Key Features: Dynamically lists technologies from data.techStack and presents them in a visually appealing layout.
 Component Descriptions
 Button.tsx
 
@@ -109,6 +106,6 @@ then user will call you again to make change in the file but with same prompt an
 Change the background color of about section only give exact code , prompt number 2
 
 all the files handle the functionality as there name suggest feel free to make changes there if user say so 
-code is in next.js typescript so make sure to use correct format other wise it will break the application do not write 
+code is in vite react typescript so make sure to use correct format other wise it will break the application do not write 
 any comments just write the complete file with requested changes.
 Don't write ```jsx ``` on any file it break the react code 

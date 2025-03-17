@@ -23,7 +23,7 @@ const Section = () => {
     async function main() {
       if (webContainer && containerActive.length > 0) {
         const rawData = await webContainer.fs.readFile(
-          "my-app/data.ts",
+          "vite-template/data.ts",
           "utf-8"
         );
         const start = rawData.indexOf("{");

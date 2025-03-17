@@ -64,15 +64,13 @@ const WebContainer = () => {
 
         if (input) {
           setTimeout(async () => {
-            await input.write(
-              "npx create-next-app@latest --example https://github.com/HMaan0/Templates- my-app \n"
-            );
-          }, 5000);
+            await input.write("npm i @harshmaan/vite-template \n");
+          }, 4000);
         }
 
-        // terminal.onData((data) => {
-        //   input?.write(data);
-        // });
+        terminal.onData((data) => {
+          input?.write(data);
+        });
 
         return shellProcess;
       } catch (error) {
@@ -99,15 +97,23 @@ const WebContainer = () => {
 
   useEffect(() => {
     async function handleLogs() {
-      if (terminalLogs.includes("Ok to proceed? (y)")) {
-        setComplete(true);
-        await inputWriter?.write("y\n");
-      }
-
-      if (terminalLogs.includes("❯") && complete === true && root === false) {
-        await inputWriter?.write("cd my-app \n");
+      if (terminalLogs.includes("[?25h[?2004h") && root === false) {
+        await inputWriter?.write(
+          "cp -r node_modules/@harshmaan/vite-template . \n"
+        );
+        setTimeout(async () => {
+          await inputWriter?.write("rm -rf node_modules && rm package.json \n");
+        }, 1000);
+        setTimeout(async () => {
+          await inputWriter?.write("cd vite-template \n");
+        }, 4000);
+        setTimeout(async () => {
+          await inputWriter?.write("npm i --force \n");
+          setComplete(true);
+        }, 8000);
         setRoot(true);
       }
+
       if (terminalLogs.includes("❯") && complete && root)
         await inputWriter?.write("npm run dev \n");
     }

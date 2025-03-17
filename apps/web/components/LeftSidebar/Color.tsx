@@ -6,7 +6,7 @@ import WriteIcon from "./WriteIcon";
 import { useRecoilValue } from "recoil";
 import { webContainerInstance } from "../../store/webContainer";
 
-const colorFor = ["Background", "Card", "Gradient", "Button"];
+const colorFor = ["Card", "Gradient", "Button"];
 const modes = ["Light", "Dark"];
 const Color = () => {
   const webContainer = useRecoilValue(webContainerInstance);
@@ -20,13 +20,14 @@ const Color = () => {
     let updatedRawData: string;
 
     if (webContainer) {
-      if (component === "Background") {
-        if (theme === "Light") {
-          obj = "theme_bg_light";
-        } else {
-          obj = "theme_bg_dark";
-        }
-      } else if (component === "Card") {
+      // if (component === "Background") {
+      //   if (theme === "Light") {
+      //     obj = "theme_bg_light";
+      //   } else {
+      //     obj = "theme_bg_dark";
+      //   }
+      // }
+      if (component === "Card") {
         theme === "Light" ? (obj = "primary_light") : (obj = "primary_dark");
       } else if (component === "Gradient") {
         theme ? (obj = "theme_gradient") : (obj = "");
@@ -36,7 +37,7 @@ const Color = () => {
         return { message: "Error component cannot be null" };
       }
       const rawData = await webContainer.fs.readFile(
-        "my-app/tailwind.config.ts",
+        "vite-template/tailwind.config.js",
         "utf-8"
       );
       const start = rawData.indexOf("colors:");
@@ -78,7 +79,7 @@ const Color = () => {
         );
       }
       await webContainer.fs.writeFile(
-        "my-app/tailwind.config.ts",
+        "vite-template/tailwind.config.js",
         updatedRawData
       );
     }

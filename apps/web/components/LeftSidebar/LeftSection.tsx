@@ -24,22 +24,22 @@ const LeftSection = () => {
       id: 2,
       component: "Navbar",
     },
+    // {
+    //   id: 3,
+    //   component: "TechStack",
+    // },
+    // {
+    //   id: 4,
+
+    //   component: "AnimateStack",
+    // },
     {
       id: 3,
-      component: "TechStack",
-    },
-    {
-      id: 4,
-
-      component: "AnimateStack",
-    },
-    {
-      id: 5,
 
       component: "Card",
     },
     {
-      id: 6,
+      id: 4,
       component: "Background",
     },
     // {
@@ -80,7 +80,7 @@ const LeftSection = () => {
       if (webContainer) {
         if (section === "TechStack" && serializedTechIcon) {
           const rawData = await webContainer.fs.readFile(
-            "my-app/src/icon.ts",
+            "vite-template/src/icon.ts",
             "utf-8"
           );
           const start = rawData.indexOf("[");
@@ -97,10 +97,13 @@ const LeftSection = () => {
             JSON.stringify(newData, null, 2) +
             rawData.slice(end);
 
-          await webContainer.fs.writeFile("my-app/src/icon.ts", updatedRawData);
+          await webContainer.fs.writeFile(
+            "vite-template/src/icon.ts",
+            updatedRawData
+          );
         } else {
           const rawData = await webContainer.fs.readFile(
-            "my-app/component.ts",
+            "vite-template/component.ts",
             "utf-8"
           );
           const start = rawData.indexOf("{");
@@ -121,7 +124,11 @@ const LeftSection = () => {
             null,
             2
           )}${rawData.slice(end)}`;
-          await webContainer.fs.writeFile("my-app/component.ts", updatedData);
+
+          await webContainer.fs.writeFile(
+            "vite-template/component.ts",
+            updatedData
+          );
         }
       }
     } catch (error) {

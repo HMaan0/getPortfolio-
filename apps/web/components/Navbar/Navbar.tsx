@@ -43,7 +43,7 @@ const Navbar = () => {
           }
         };
 
-        await readFolder("my-app");
+        await readFolder("vite-template");
 
         const zipContent = await zip.generateAsync({ type: "blob" });
         const blobUrl = URL.createObjectURL(zipContent);
