@@ -68,9 +68,9 @@ const WebContainer = () => {
           }, 4000);
         }
 
-        terminal.onData((data) => {
-          input?.write(data);
-        });
+        // terminal.onData((data) => {
+        //   input?.write(data);
+        // });
 
         return shellProcess;
       } catch (error) {

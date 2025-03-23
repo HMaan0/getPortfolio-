@@ -9,3 +9,8 @@ export const preview = atom({
   key: "preview",
   default: false,
 });
+
+export const code = atom({
+  key: "code",
+  default: "preview",
+});

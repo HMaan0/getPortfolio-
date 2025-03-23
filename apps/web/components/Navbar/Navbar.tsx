@@ -4,16 +4,18 @@ import ProjectLink from "./ProjectLink";
 import ScreenSize from "./ScreenSize";
 import { DashboardButton } from "@repo/ui/DashboardButton";
 import { useRecoilValue } from "recoil";
-import { preview, screen } from "../../store/screen";
+import { code, preview, screen } from "../../store/screen";
 import { MacButton } from "@repo/ui/MacButton";
 import { BiDownload } from "react-icons/bi";
 import { iFrameUrl, webContainerInstance } from "../../store/webContainer";
 import JSZip from "jszip";
+import CodeAndPreview from "./CodeAndPreview";
 const Navbar = () => {
   const screenSize = useRecoilValue(screen);
   const webContainer = useRecoilValue(webContainerInstance);
   const fullScreen = useRecoilValue(preview);
   const url = useRecoilValue(iFrameUrl);
+  const codeAndPreview = useRecoilValue(code);
   const downloadSrcCode = async () => {
     if (webContainer) {
       try {
@@ -72,11 +74,16 @@ const Navbar = () => {
         </div>
       ) : (
         <MacNavbar className={`${fullScreen ? "" : "rounded-t-[36px]"}`}>
-          <div className="hidden sm:flex w-full justify-start">
+          <div className="hidden sm:flex w-full justify-start gap-2">
             <ProjectLink></ProjectLink>
-            <div className="hidden lg:flex w-full justify-center ">
-              <ScreenSize></ScreenSize>
-            </div>
+            <CodeAndPreview />
+            {codeAndPreview === "preview" && (
+              <>
+                <div className="hidden lg:flex w-full justify-center ">
+                  <ScreenSize></ScreenSize>
+                </div>
+              </>
+            )}
           </div>
           <div className="sm:hidden block">
             <MacButton />

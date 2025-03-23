@@ -7,12 +7,14 @@ import WebContainer from "./webContainer/WebContainer";
 import { useEffect } from "react";
 import LoadingText from "./LoadingText";
 import { showLoading } from "../../store/showLoading";
-
+import { code } from "../../store/screen";
+import Editor from "../Code/Editor";
 const Workspace = () => {
   const screenSize = useRecoilValue(screen);
   const url = useRecoilValue(iFrameUrl);
   const fullScreen = useRecoilValue(preview);
   const [showLoadingText, setShowLoadingText] = useRecoilState(showLoading);
+  const [codeAndPreview] = useRecoilValue(code);
   useEffect(() => {
     if (url.length > 0) {
       setShowLoadingText(false);
@@ -38,17 +40,23 @@ const Workspace = () => {
                 <LoadingText />
               </>
             )}
-            <iframe
-              src={url}
-              className="transition-all duration-1000 w-full h-full fixed"
-              style={{
-                width: "150%",
-                height: "150%",
-                transform: "scale(0.67)",
-                transformOrigin: "0 0",
-                border: "none",
-              }}
-            ></iframe>
+            {codeAndPreview === "c" ? (
+              <Editor />
+            ) : (
+              <>
+                <iframe
+                  src={url}
+                  className="transition-all duration-1000 w-full h-full fixed"
+                  style={{
+                    width: "150%",
+                    height: "150%",
+                    transform: "scale(0.67)",
+                    transformOrigin: "0 0",
+                    border: "none",
+                  }}
+                ></iframe>
+              </>
+            )}
           </div>
         </>
       ) : (
