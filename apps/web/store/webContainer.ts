@@ -23,5 +23,5 @@ export const toggle = atom({
 });
 export const fileName = atom({
   key: "fileName",
-  default: "vite-template/src/App.tsx",
+  default: "",
 });

@@ -1,89 +1,79 @@
 "use client";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { fileName, webContainerInstance } from "../../store/webContainer";
 import { useRecoilValue } from "recoil";
-import Prism from "prismjs";
-import "prismjs/themes/prism-tomorrow.css";
-import "prismjs/components/prism-javascript";
-import "prismjs/components/prism-typescript";
-import "prismjs/components/prism-jsx";
-import "prismjs/components/prism-tsx";
-import "prismjs/components/prism-json";
-import "prismjs/components/prism-css";
-import "prismjs/plugins/line-numbers/prism-line-numbers";
-import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+import Editor from "@monaco-editor/react";
 
 const Code = () => {
   const webContainer = useRecoilValue(webContainerInstance);
   const [file, setFile] = useState<any>(null);
-  const [language, setLanguage] = useState("json");
+  //const [codeContent, setCodeContent] = useState("");
   const filePath = useRecoilValue(fileName);
-  let completePath = "vite-template/";
+  const [completePath, setCompletePath] = useState("vite-template/src/App.tsx");
+
   useEffect(() => {
     async function main() {
       if (webContainer) {
-        if (filePath.includes(completePath)) {
-          completePath = filePath;
-        } else if (filePath.includes("Background")) {
-          completePath = completePath + "src/components/" + filePath;
-        } else {
-          if (filePath.includes("src")) {
-            completePath = completePath + filePath;
+        let newPath = "vite-template/src/App.tsx";
+
+        if (filePath.length > 0) {
+          if (filePath.includes("vite-template/")) {
+            newPath = filePath;
+          } else if (filePath.includes("Background")) {
+            newPath = "vite-template/" + "src/components/" + filePath;
           } else {
-            completePath = completePath + "src/" + filePath;
+            if (filePath.includes("src")) {
+              newPath = "vite-template/" + filePath;
+            } else {
+              newPath = "vite-template/" + "src/" + filePath;
+            }
           }
         }
-        const fileContent = await webContainer.fs.readFile(
-          completePath,
-          "utf-8"
-        );
-        setFile(fileContent);
 
-        const extension = filePath.split(".").pop()?.toLowerCase();
-        switch (extension) {
-          case "js":
-            setLanguage("javascript");
-            break;
-          case "jsx":
-            setLanguage("jsx");
-            break;
-          case "ts":
-            setLanguage("typescript");
-            break;
-          case "tsx":
-            setLanguage("tsx");
-            break;
-          case "json":
-            setLanguage("json");
-            break;
-          case "css":
-            setLanguage("css");
-            break;
-          default:
-            setLanguage("javascript");
-        }
+        setCompletePath(newPath);
+
+        const fileContent = await webContainer.fs.readFile(newPath, "utf-8");
+        setFile(fileContent);
       }
     }
     main();
-  }, [webContainer, filePath]);
+  }, [filePath, webContainer]);
 
-  useEffect(() => {
-    if (file) {
-      Prism.highlightAll();
+  async function changeCode(value: string | undefined) {
+    if (value !== undefined) {
+      await webContainer?.fs.writeFile(completePath, value);
     }
-  }, [file, language]);
-
+  }
   if (!file) return <div className="p-4">Loading file...</div>;
 
   return (
     <div className="bg-theme-button w-full h-full flex flex-col overflow-hidden">
       <div className="text-gray-400 border-b border-theme-border px-2 text-white/55 sticky top-0 z-10 bg-theme-button flex-shrink-0">
-        {filePath}
+        {completePath}
       </div>
       <div className="overflow-y-auto overflow-x-auto h-full">
-        <pre className="line-numbers m-0">
-          <code className={`language-${language}`}>{file}</code>
-        </pre>
+        <Editor
+          height="100%"
+          defaultLanguage="typescript"
+          theme="vs-dark"
+          value={file || ""}
+          onChange={changeCode}
+          options={{
+            readOnly: false,
+            minimap: { enabled: false },
+            fontSize: 14,
+            wordWrap: "on",
+            scrollBeyondLastLine: true,
+          }}
+          beforeMount={(monaco) => {
+            monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions(
+              {
+                noSemanticValidation: true,
+                noSyntaxValidation: true,
+              }
+            );
+          }}
+        />
       </div>
     </div>
   );

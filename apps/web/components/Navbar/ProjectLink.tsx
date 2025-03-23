@@ -14,16 +14,15 @@ const ProjectLink = () => {
     <>
       <div className="flex gap-2">
         <MacButton></MacButton>
-        {/* <DashboardInput>
-          <BiLock color="lightgreen" size={20}></BiLock>{" "}
-          {url ? "http://localhost/dashboard/project" : "Loading..."}
-        </DashboardInput> */}
         <Button
           onClick={() => setFullScreen((prev) => !prev)}
           className={`${url.length === 0 ? "cursor-not-allowed" : " "}`}
           disabled={url.length === 0}
         >
-          <CiShare1 size={20} /> Preview
+          <CiShare1 size={20} />{" "}
+          <p className="whitespace-nowrap overflow-hidden text-ellipsis w-full">
+            Full screen
+          </p>
         </Button>
       </div>
     </>
